@@ -1,0 +1,53 @@
+<h1>
+  David T Kessler
+</h1>
+<h2>
+  About the Artist
+</h2>
+<p>
+David Kessler emerged as a photo-realist painter in California in the mid-1970's. Known for taking the visual aberrations of unsuccessful photographs and incorporating them into compositions in his Ruin Slide Series, he departed from other painters in that genre and confirmed his interest in perceptions of abstraction, illusion, and realism. In 2003, this work was selected, from among 20 American painters, to be included in Hyper-realisms USA 1965-1975 at the Strasbourg Museum of Contemporary Art. In more recent series, Mr. Kessler has concentrated on the bravura rendering of photo-realistic scenes in nature. In the early 1980's, he painted abstract dashes of color on Plexiglas, which he set up in front of a landscape to be photographed as source material, thus lending a surreal quality to the realistic scene. 
+</p>
+<p>
+In the 1990's, he began painting on aluminum and rough-brushing the surface of the raw metal to create compositions that combine painted and non-painted portions of the surface. Mr. Kessler's work is in the collections of many museums in the United States of Europe. 
+</p>
+<div id="prevpopimg" class="popimgcontrols"></div>
+<p id="imgcount">1</p>
+<div id="nextpopimg" class="popimgcontrols"></div>
+<img src="resources/VR Art Tour Assets/David T Kessler/David T Kessler - Cat_s Claw Elegance - Acrylic on Aluminum - 2006 - PC -.png" alt="" id="popoutimg">
+  <script id="injectable">
+// write a way to change the image if necessary
+let imageSrcs = {
+  1:"resources/VR Art Tour Assets/David T Kessler/David T Kessler - Cat_s Claw Elegance - Acrylic on Aluminum - 2006 - PC -.png",
+  2:"resources/VR Art Tour Assets/David T Kessler/David T Kessler - Undercut Elegance - Acrylic on Aluminum - 2006 - (PC) - 13MB.png"
+}
+let prev = document.querySelector("#prevpopimg")
+let next = document.querySelector("#nextpopimg")
+let count = document.querySelector("#imgcount")
+let img = document.querySelector("#popoutimg")
+
+next.addEventListener("click",()=> {
+  // ensure that we are able to move to the next
+  let oldInd = parseInt(count.innerHTML)
+  if (imageSrcs.length > oldInd) {
+    // change the image src to the next image
+    img.src = imageSrcs[oldInd+1]
+    img.onload = ()=> {
+      console.log("image finished loading")
+      count.innerHTML = oldInd+1
+    }
+  }
+})
+prev.addEventListener("click",()=> {
+  // ensure that we are able to move to the next
+  let oldInd = parseInt(count.innerHTML)
+  if (1 < oldInd) {
+    // change the image src to the next image
+    img.src = imageSrcs[oldInd-1]
+    img.onload = ()=> {
+      console.log("image finished loading")
+      count.innerHTML = oldInd-1
+    }
+  }
+})
+
+  </script>

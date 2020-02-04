@@ -1,0 +1,197 @@
+@font-face {
+  font-family:MiloOT-Ita;
+  src:url("./resources/milo/MiloOT-Ita.otf")
+}
+
+@font-face {
+  font-family:MiloOT-Text;
+  src:url("./resources/milo/MiloOT-Text.otf")
+}
+
+@font-face {
+  font-family:MiloOT;
+  src:url("./resources/milo/MiloOT.otf")
+}
+
+@font-face {
+  font-family:MiloOT-ExligIta;
+  src:url("./resources/milo/MiloOT-ExligIta.otf")
+}
+
+@font-face {
+  font-family:MiloOT-MediIta;
+  src:url("./resources/milo/MiloOT-MediIta.otf")
+}
+
+@font-face {
+  font-family:MiloOT-BlackIta;
+  src:url("./resources/milo/MiloOT-BlackIta.otf")
+}
+
+@font-face {
+  font-family:MiloOT-Bold;
+  src:url("./resources/milo/MiloOT-Bold.otf")
+}
+
+@font-face {
+  font-family:MiloOT-LightIta;
+  src:url("./resources/milo/MiloOT-LightIta.otf")
+}
+
+@font-face {
+  font-family:MiloOT-ThinIta;
+  src:url("./resources/milo/MiloOT-ThinIta.otf")
+}
+
+@font-face {
+  font-family:MiloOT-Light;
+  src:url("./resources/milo/MiloOT-Light.otf")
+}
+
+@font-face {
+  font-family:MiloOT-Xbold;
+  src:url("./resources/milo/MiloOT-Xbold.otf")
+}
+
+@font-face {
+  font-family:MiloOT-XboldIta;
+  src:url("./resources/milo/MiloOT-XboldIta.otf")
+}
+
+@font-face {
+  font-family:MiloOT-Exlig;
+  src:url("./resources/milo/MiloOT-Exlig.otf")
+}
+
+@font-face {
+  font-family:MiloOT-BoldIta;
+  src:url("./resources/milo/MiloOT-BoldIta.otf")
+}
+
+@font-face {
+  font-family:MiloOT-TextIta;
+  src:url("./resources/milo/MiloOT-TextIta.otf")
+}
+
+@font-face {
+  font-family:MiloOT-Medi;
+  src:url("./resources/milo/MiloOT-Medi.otf")
+}
+
+@font-face {
+  font-family:MiloOT-Black;
+  src:url("./resources/milo/MiloOT-Black.otf")
+}
+
+@font-face {
+  font-family:MiloOT-Thin;
+  src:url("./resources/milo/MiloOT-Thin.otf")
+}
+
+#title {
+  text-align:center;
+}
+#returnDiv {
+  position:absolute;
+  top:0px;
+  left:0px;
+  display:flex;
+}
+#returnDiv,img {
+  width:20%;
+}
+
+body {
+  font-family:MiloOt-Exlig;
+  font-size:20px;
+}
+
+#container {
+}
+#header-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 54px;
+
+}
+.tour-link {
+  font-family:MiloOT-Exlig;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:50%;
+  margin:0 auto;
+}
+#tour-links img{
+  width:20%;
+  display:block;
+  margin:0 auto;
+}
+
+.intro-text {
+  width:60%;
+  margin:0 auto;
+  font-family:MiloOt-Exlig;
+}
+
+#outer {
+  display:flex;
+  align-items:center;
+  justify-content: space-evenly;
+}
+
+.floor {
+  text-align:center;
+  background:#8cb9d2;
+  border:black solid 1pt;
+}
+
+#active {
+  background:#d98748;
+}
+
+#exit {
+  width:inherit;
+}
+
+#xholder {
+  border:black 2px solid;
+  background:gray;
+  width:30px;
+}
+
+
+.popoutHolder {
+  width:30%;
+  background:#8cb9d2;
+  align-items:flex-end;
+}
+
+#videoHolder {
+  background:white;
+  z-index: 50;
+}
+
+.popoutHolder img {
+  width:100%;
+}
+
+#sceneex {
+      position:absolute;
+      top : 0px;
+      left:0px;
+      height:75px;
+      width:unset;
+}
+
+.popimgcontrols{
+  height:20px;
+  width:20px;
+  background:black;
+}
