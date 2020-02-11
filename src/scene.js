@@ -36,6 +36,9 @@ let sceneInfo = {
   'David_T_Kessler_Cats_Claw_Elegance': {
     'image': './resources/DB5-V art tour/insta-360/IMG_20191104_151639_00_008.jpg'
   },
+  'Barry_Entner_Flora_Loose_Group': {
+    'image':'./resources/DB5-V art tour/insta-360/entner_flora_loose_group.jpg'
+  },
   'Michael_Comb_New_Map_of_Hope': {
     'image': './resources/DB5-V art tour/insta-360/IMG_20191104_152305_00_020.jpg'
   },
@@ -66,8 +69,8 @@ let sceneInfo = {
       icons: [{
         type: 'info',
         position: "-5 0 -8",
-        rotation:"0 40 0",
-        popout_html_file:"resources/DB5-V art tour/david_t_kessler.html"
+        rotation: "0 40 0",
+        popout_html_file: "./resources/DB5-V art tour/popouts/david_t_kessler.html"
 
       }
       ]
@@ -176,7 +179,13 @@ let basicScene = (room) => {
       // backup video for testing today
       if (vidlink == undefined) {
         vid.create("./resources/videos/dolbycanyon.m4v", 200, 200, true)
+        // attach bottom class
       }
+    }
+    let vidHolder = document.querySelector(".popoutHolder")
+    if (vidHolder) {
+      // move vid to bottom left
+    vidHolder.classList.add("bottomleftvideo")
     }
 
 

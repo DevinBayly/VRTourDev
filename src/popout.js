@@ -107,7 +107,7 @@ let videoPopout = () => {
         holder.style.top = window.innerHeight - holder.getBoundingClientRect().height + "px"
         holder.style.left = window.innerWidth - holder.getBoundingClientRect().width + "px"
       } else {
-        holder.style.top = (window.innerHeight - holder.getBoundingClientRect().height)/2 + "px"
+        //holder.style.top = (window.innerHeight - holder.getBoundingClientRect().height)/2 + "px"
       }
     })
     document.querySelector("#outer").prepend(holder)

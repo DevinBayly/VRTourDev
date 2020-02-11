@@ -195,3 +195,26 @@ body {
   width:20px;
   background:black;
 }
+#explanationVideo {
+  width:50%;
+  display:block;
+  margin:0 auto;
+}
+
+.bottomleftvideo {
+  position:absolute;
+  bottom:0px;
+  left:0px;
+}
+
+#footer{
+  margin-top:5%;
+  display:flex;
+  justify-content:center;
+
+}
+#arttouricon{
+  display:block;
+  margin:0 auto;
+  width:20%;
+}

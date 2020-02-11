@@ -1,1 +1,129 @@
-<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" data-name="Layer 6" id="Layer_6" viewBox="0 0 637.11 375.4" width="637.11" height="375.4"><ns0:defs><ns0:style>.cls-1{fill:#378dbd;}.cls-2{fill:none;stroke:#0c234b;stroke-miterlimit:10;stroke-width:0.74px;}.cls-3{fill:#ef4056;}</ns0:style></ns0:defs><ns0:title>NEW_keating_floor_maps_01_2020</ns0:title><ns0:polygon class="cls-1" points="607.36 222.32 316.09 222.32 315.53 360.18 30.04 360.18 30.04 34.06 607.36 34.06 607.36 222.32" /><ns0:polyline class="cls-2" points="162.14 23.55 162.14 87.35 263.16 87.35 263.16 351.91" /><ns0:polyline class="cls-2" points="429.49 23.55 429.49 85.67 429.49 211.81" /><ns0:polyline class="cls-2" points="305.58 211.57 305.58 87.1 430.05 87.1" /><ns0:polygon class="cls-2" points="596.85 211.81 305.58 211.81 305.02 349.67 19.53 349.67 19.53 23.55 596.85 23.55 596.85 211.81" /><ns0:g id="Gregory_West_Fiddlers_Dream"><ns0:circle class="cls-3" cx="183.35" cy="66.7" data-name="Gregory West Fiddlers Dream" r="10.88" /></ns0:g><ns0:g id="David_T_Kessler_Undercut_Elegance"><ns0:circle class="cls-3" cx="236.64" cy="295.27" data-name="David T Kessler Undercut Elegance" r="10.88" /></ns0:g><ns0:g id="Emmi_Whitehorse_Water_Cure"><ns0:circle class="cls-3" cx="350.19" cy="181.69" data-name="Emmi Whitehorse Water Cure" r="10.88" /></ns0:g><ns0:g id="Barbara_Rogers_Ordinary_Miracles"><ns0:circle class="cls-3" cx="472.59" cy="87.1" data-name="Barbara Rogers Ordinary Miracles" r="10.88" /></ns0:g><ns0:g id="Barry_Entner_Flora_Loose_Group"><ns0:circle class="cls-3" cx="541.8" cy="112.33" data-name="Barry Entner Flora Loose Group" r="10.88" /></ns0:g></ns0:svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   data-name="Layer 6"
+   id="Layer_6"
+   viewBox="0 0 637.11 375.4"
+   width="637.11"
+   height="375.4"
+   version="1.1"
+   sodipodi:docname="NEW_keating_floor_maps_01_2020_floor_1_art_track.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata36">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="713"
+     id="namedview34"
+     showgrid="false"
+     inkscape:zoom="0.536799"
+     inkscape:cx="318.55499"
+     inkscape:cy="187.7"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_6" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#378dbd;}.cls-2{fill:none;stroke:#0c234b;stroke-miterlimit:10;stroke-width:0.74px;}.cls-3{fill:#ef4056;}</style>
+  </defs>
+  <title
+     id="title6">NEW_keating_floor_maps_01_2020</title>
+  <polygon
+     class="cls-1"
+     points="316.09,222.32 315.53,360.18 30.04,360.18 30.04,34.06 607.36,34.06 607.36,222.32 "
+     id="polygon8"
+     transform="translate(-10.51,-10.75)"
+     style="fill:#378dbd" />
+  <polyline
+     class="cls-2"
+     points="162.14 23.55 162.14 87.35 263.16 87.35 263.16 351.91"
+     id="polyline10" />
+  <polyline
+     class="cls-2"
+     points="429.49 23.55 429.49 85.67 429.49 211.81"
+     id="polyline12" />
+  <polyline
+     class="cls-2"
+     points="305.58 211.57 305.58 87.1 430.05 87.1"
+     id="polyline14" />
+  <polygon
+     class="cls-2"
+     points="596.85 211.81 305.58 211.81 305.02 349.67 19.53 349.67 19.53 23.55 596.85 23.55 596.85 211.81"
+     id="polygon16" />
+  <g
+     id="David_T_Kessler_Cats_Claw_Elegance">
+    <circle
+       class="cls-3"
+       cx="183.35001"
+       cy="66.699997"
+       data-name="Gregory West Fiddlers Dream"
+       r="10.88"
+       id="circle18"
+       style="fill:#ef4056" />
+  </g>
+  <g
+     id="David_T_Kessler_Undercut_Elegance">
+    <circle
+       class="cls-3"
+       cx="236.64"
+       cy="295.27"
+       data-name="David T Kessler Undercut Elegance"
+       r="10.88"
+       id="circle21" />
+  </g>
+  <g
+     id="Emmi_Whitehorse_Water_Cure">
+    <circle
+       class="cls-3"
+       cx="350.19"
+       cy="181.69"
+       data-name="Emmi Whitehorse Water Cure"
+       r="10.88"
+       id="circle24" />
+  </g>
+  <g
+     id="Barbara_Rogers_Ordinary_Miracles">
+    <circle
+       class="cls-3"
+       cx="472.59"
+       cy="87.1"
+       data-name="Barbara Rogers Ordinary Miracles"
+       r="10.88"
+       id="circle27" />
+  </g>
+  <g
+     id="Barry_Entner_Flora_Loose_Group">
+    <circle
+       class="cls-3"
+       cx="541.8"
+       cy="112.33"
+       data-name="Barry Entner Flora Loose Group"
+       r="10.88"
+       id="circle30" />
+  </g>
+</svg>
