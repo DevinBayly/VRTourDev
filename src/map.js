@@ -73,13 +73,25 @@ let svgDraw = (imagepath, roiIds) => {
   ob.svg = svg
   return ob
 }
-// rooms of interest
-// make this generic, so a list can be provided
-let rooms = ['Jackson_Boelts_Sequence:_Red_Maize', 'Barbara_Rogers_Hothouse_hyrbids', 'Michael_Comb_New_Map_of_Hope', 'Emmi_Whitehorse_Salmon_Berry_II', 'Heather_Green_Living_Cosmos', 'Barbara_Rogers_A_Clear_Day_In_The_Valley', 'David_T_Kessler_Cats_Claw_Elegance', 'Barbara_Rogers_Ordinary_Miracles', 'Gregory_D._West_Table_Wax', 'Maurice_J._Sevigny_The_Biomarble_Series', 'Barry_Entner_Flora_Loose_Group', 'Emmi_Whitehorse_Condon_Sequence', 'Emmi_Whitehorse_Water_Cure']
+
+let StudentTourMap = ()=> {
+  // add to this the id's of the circles in the CSV
+  let ob ={}
+  let circleIds = ['student_1', 'student_2', 'student_3', 'student_4', 'student_5', 'student_6','student_7']
+
+  ob.start = ()=> {
+    ob.floorSVG = svgDraw("./resources/tricomplex.svg",circleIds)
+  }
+  // draw the svg to the screen
+  return ob
+}
 
 // change the background on clicks 
 //
-let floorNav = () => {
+let ArtTourMap = () => {
+  // rooms of interest
+  // make this generic, so a list can be provided
+  let rooms = ['Jackson_Boelts_Sequence:_Red_Maize', 'Barbara_Rogers_Hothouse_hyrbids', 'Michael_Comb_New_Map_of_Hope', 'Emmi_Whitehorse_Salmon_Berry_II', 'Heather_Green_Living_Cosmos', 'Barbara_Rogers_A_Clear_Day_In_The_Valley', 'David_T_Kessler_Cats_Claw_Elegance', 'Barbara_Rogers_Ordinary_Miracles', 'Gregory_D._West_Table_Wax', 'Maurice_J._Sevigny_The_Biomarble_Series', 'Barry_Entner_Flora_Loose_Group', 'Emmi_Whitehorse_Condon_Sequence', 'Emmi_Whitehorse_Water_Cure']
   let ob = {}
 
   ob.changeCol = (ele) => {
@@ -121,14 +133,24 @@ let floorNav = () => {
       }
     })
   })
+  ob.start = ()=> {
+    document.querySelectorAll(".floor")[3].click()
+    // trigger creation of video element popout
+    let introvid = videoPopout()
+    // create a video with the initial source, that is 300x300
+    introvid.create("./resources/videos/dolbycanyon.m4v", 200, 300)
+  }
   return ob
 }
 // video element added to the bottom
 window.onload = () => {
-  let floorsActive = floorNav()
-  document.querySelectorAll(".floor")[3].click()
-  // trigger creation of video element popout
-  let introvid = videoPopout()
-  // create a video with the initial source, that is 300x300
-  introvid.create("./resources/videos/dolbycanyon.m4v", 200, 300)
+  if (document.querySelector("#title")==" Art and Science on Display ") {
+    // load the art tour experience instead
+    let arttour = ArtTourMap()
+    arttour.start()
+  } else {
+    let studentTour = StudentTourMap()
+    studentTour.start()
+  }
+
 }
