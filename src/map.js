@@ -144,7 +144,7 @@ let ArtTourMap = () => {
 }
 // video element added to the bottom
 window.onload = () => {
-  if (document.querySelector("#title")==" Art and Science on Display ") {
+  if (document.querySelector("#title").innerHTML==" Art and Science on Display ") {
     // load the art tour experience instead
     let arttour = ArtTourMap()
     arttour.start()
