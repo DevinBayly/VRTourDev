@@ -32,53 +32,6 @@ AFRAME.registerComponent('mlisten', {
     })
   }
 })
-let sceneInfo = {
-  'David_T_Kessler_Cats_Claw_Elegance': {
-    'image': './resources/DB5-V art tour/insta-360/IMG_20191104_151639_00_008.jpg'
-  },
-  'Barry_Entner_Flora_Loose_Group': {
-    'image':'./resources/DB5-V art tour/insta-360/entner_flora_loose_group.jpg'
-  },
-  'Michael_Comb_New_Map_of_Hope': {
-    'image': './resources/DB5-V art tour/insta-360/IMG_20191104_152305_00_020.jpg'
-  },
-  'Maurice_J._Sevigny_The_Biomarble_Series': {
-    'image': './resources/DB5-V art tour/insta-360/IMG_20191104_151231_00_004.jpg'
-  },
-  'Barbara_Rogers_Ordinary_Miracles': {
-    'image': './resources/DB5-V art tour/insta-360/IMG_20191104_151102_00_001.jpg'
-  },
-  'Heather_Green_Living_Cosmos': {
-    'image': './resources/DB5-V art tour/insta-360/IMG_20191104_152433_00_024.jpg'
-  },
-  'Emmi_Whitehorse_Condon_Sequence': {
-    'image': "./resources/DB5-V art tour/insta-360/emmi-whitehorse-condonsequence.jpg"
-  },
-  'Emmi_Whitehorse_Water_Cure': {
-    'image': './resources/DB5-V art tour/insta-360/emmi-whitehorse-watercure.jpg'
-  },
-  "Emmi_Whitehorse_Salmon_Berry_II": {
-    "image": "./resources/DB5-V art tour/insta-360/emmi-whitehorse-salmonberry.jpg"
-  },
-  'Barbara_Rogers_Hothouse_hyrbids': {
-    'image': "./resources/DB5-V art tour/insta-360/barbara-rogers-hothousehybrids.jpg"
-  },
-  'Barbara_Rogers_A_Clear_Day_In_The_Valley': {
-    'image': "./resources/DB5-V art tour/insta-360/barbara-rogers-clearday.jpg",
-    'json': {
-      icons: [{
-        type: 'info',
-        position: "-5 0 -8",
-        rotation: "0 40 0",
-        popout_html_file: "./resources/DB5-V art tour/popouts/david_t_kessler.html"
-
-      }
-      ]
-    }
-  }
-
-}
-
 
 let generateIcon = (config) => {
   let ob = {}
@@ -101,7 +54,8 @@ let generateIcon = (config) => {
   ob.element = circle
   return ob
 }
-
+// populated in the window load step of map.js
+let sceneInfo 
 
 let basicScene = (room) => {
   let ob = {}

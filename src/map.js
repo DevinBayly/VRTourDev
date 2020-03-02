@@ -74,13 +74,13 @@ let svgDraw = (imagepath, roiIds) => {
   return ob
 }
 
-let StudentTourMap = ()=> {
+let StudentTourMap = () => {
   // add to this the id's of the circles in the CSV
-  let ob ={}
-  let circleIds = ['student_1', 'student_2', 'student_3', 'student_4', 'student_5', 'student_6','student_7']
+  let ob = {}
+  let circleIds = ['student_1', 'student_2', 'student_3', 'student_4', 'student_5', 'student_6', 'student_7']
 
-  ob.start = ()=> {
-    ob.floorSVG = svgDraw("./resources/tricomplex.svg",circleIds)
+  ob.start = () => {
+    ob.floorSVG = svgDraw("./resources/tricomplex.svg", circleIds)
   }
   // draw the svg to the screen
   return ob
@@ -133,7 +133,7 @@ let ArtTourMap = () => {
       }
     })
   })
-  ob.start = ()=> {
+  ob.start = () => {
     document.querySelectorAll(".floor")[3].click()
     // trigger creation of video element popout
     let introvid = videoPopout()
@@ -143,8 +143,8 @@ let ArtTourMap = () => {
   return ob
 }
 // video element added to the bottom
-window.onload = () => {
-  if (document.querySelector("#title").innerHTML==" Art and Science on Display ") {
+window.onload = async () => {
+  if (document.querySelector("#title").innerHTML == " Art and Science on Display ") {
     // load the art tour experience instead
     let arttour = ArtTourMap()
     arttour.start()
@@ -152,5 +152,11 @@ window.onload = () => {
     let studentTour = StudentTourMap()
     studentTour.start()
   }
+  sceneInfo = await fetch("./resources/sceneinfo.yml").then(res => res.text()).then(t => {
+    //convert into a json object with the jsyaml library
+    return jsyaml.safeLoad(t)
+  })
+
+
 
 }
