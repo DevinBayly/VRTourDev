@@ -66,6 +66,7 @@ let basicScene = (room) => {
     // this is the connection between the svg icons and the scenes that get loaded
     // room jsons
     // these are the files which contain the scene configuration details 
+    console.log("loading room")
     let specScene = sceneInfo[room]
 
     // if the sceen isn't defined, just skip all this
@@ -82,6 +83,12 @@ let basicScene = (room) => {
     // add rayOrigin mouse
     console.log("made scene")
     document.body.append(scene)
+    let cameraHolder = document.createElement("a-entity")
+    let camera = document.createElement("a-camera")
+    cameraHolder.append(camera)
+    scene.append(cameraHolder)
+
+
     let sky = document.createElement("a-sky")
     // for some reason the sky appears tilted
 
@@ -103,6 +110,10 @@ let basicScene = (room) => {
     if (specScene.json) {
       if (specScene.json.sky) {
         sky.setAttribute("rotation", specScene.json.sky.rotation)
+      }
+      //moving the camera to face the correct spot?
+      if (specScene.json.camera) {
+        cameraHolder.setAttribute("rotation",specScene.json.camera)
       }
 
       // add the elements to the scene that are specified in the info

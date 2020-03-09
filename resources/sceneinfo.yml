@@ -1,3 +1,4 @@
+
 David_T_Kessler_Cats_Claw_Elegance:
   image: ./resources/DB5-V art tour/insta-360/IMG_20191104_151639_00_008.jpg
   json:
@@ -9,9 +10,18 @@ David_T_Kessler_Cats_Claw_Elegance:
 Barry_Entner_Flora_Loose_Group:
   image: ./resources/DB5-V art tour/insta-360/entner_flora_loose_group.jpg
   json:
+    camera: 0 -150 0
     icons:
     - type: info
-      position: -8.362 4.84 0 
+      position: 16.82207 6.45702 -7.0532 
+      rotation: 0 -84.39 0
+      popout_html_file: ./resources/DB5-V art tour/popouts/david_t_kessler.html
+    - type: info
+      position: 1.37432 0.6126 7.40994
+      rotation: 0 165.32525291161366 0
+      popout_html_file: ./resources/DB5-V art tour/popouts/david_t_kessler.html
+    - type: info
+      position: -13.9006 3.45788 -4.67199
       rotation: 0 84.39 0
       popout_html_file: ./resources/DB5-V art tour/popouts/david_t_kessler.html
 Michael_Comb_New_Map_of_Hope:
@@ -33,6 +43,8 @@ Maurice_J._Sevigny_The_Biomarble_Series:
 Barbara_Rogers_Ordinary_Miracles:
   image: ./resources/DB5-V art tour/insta-360/IMG_20191104_151102_00_001.jpg
   json:
+    sky: -1.14 0 0
+    camera: 0 90 0
     icons:
     - type: info
       position: -5 2.49 -4.54
@@ -57,6 +69,7 @@ Emmi_Whitehorse_Condon_Sequence:
 Emmi_Whitehorse_Water_Cure:
   image: ./resources/DB5-V art tour/insta-360/emmi-whitehorse-watercure.jpg
   json:
+    camera: 0 -90 0
     icons:
     - type: info
       position: 9.2 0 13.64
