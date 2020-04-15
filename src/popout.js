@@ -20,6 +20,7 @@ let popFac = () => {
         img.addEventListener("click", () => {
           console.log("bam!]")
           holder.remove()
+          ob.derivableFunction()
         })
       }
       let divxholder = document.createElement("div")
@@ -89,6 +90,9 @@ let videoPopout = () => {
     // assign location to the holder div and create a video element, and connect to src
     ob.base.create()
     let holder = ob.base.holder
+    let innerHolder = document.createElement("div")
+    innerHolder.id = "vidinner"
+    holder.append(innerHolder)
     ob.width = width
     ob.height = height
     // load video
@@ -99,18 +103,22 @@ let videoPopout = () => {
     ob.vid.addEventListener("canplay", () => {
       ob.vid.style.width = "100%"
       //holder.style.width=ob.width +"px"
-      holder.append(ob.vid)
+      innerHolder.append(ob.vid)
       holder.id = "videoHolder"
       // if absolute positioning enabled, put in the corner of the screen
       //holder.style.position = "absolute"
-      if (absPosRight) {
-        holder.style.top = window.innerHeight - holder.getBoundingClientRect().height + "px"
-        holder.style.left = window.innerWidth - holder.getBoundingClientRect().width + "px"
-      } else {
-        //holder.style.top = (window.innerHeight - holder.getBoundingClientRect().height)/2 + "px"
-      }
+      ob.backgrounddiv = document.createElement("div")
+      ob.backgrounddiv.id="grayout"
+      // set the height to the full page, dirty trick...
+      ob.backgrounddiv.style.height = `${window.scrollMaxY+ window.innerHeight + 50}px`
+      document.body.append(ob.backgrounddiv)
     })
-    document.querySelector("#outer").prepend(holder)
+    //document.querySelector("#outer").prepend(holder)
+    document.body.append(holder)
+    ob.derivableFunction = ()=> {
+      // remove the style of gray on the html 
+    }
+
   }
   return ob
 }

@@ -91,23 +91,33 @@
 #title {
   text-align:center;
 }
-#returnDiv {
+#actions{
   position:absolute;
   top:0px;
   left:0px;
   display:flex;
+  flex-direction:column;
 }
-#returnDiv,img {
+
+.actionchild { 
+  display:flex;
+  flex-direction:row;
+}
+/**
+#returnDiv img {
   width:20%;
 }
 
+*/
+
+body,html {
+  height:100%;
+}
 body {
   font-family:MiloOt-Exlig;
   font-size:20px;
 }
 
-#container {
-}
 #header-container {
 
     display: flex;
@@ -118,20 +128,14 @@ body {
     padding: 54px;
 
 }
-.tour-link {
-  font-family:MiloOT-Exlig;
-
+#tour-links {
   display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
   width:50%;
+  justify-content: center ;
   margin:0 auto;
 }
-#tour-links img{
-  width:20%;
-  display:block;
-  margin:0 auto;
+.tour-link {
+  font-family:MiloOT-Exlig;
 }
 
 .intro-text {
@@ -164,18 +168,36 @@ body {
   border:black 2px solid;
   background:gray;
   width:30px;
+  position:relative;
+  left:-50%;
 }
 
 
 .popoutHolder {
-  width:30%;
   background:#8cb9d2;
   align-items:flex-end;
 }
 
 #videoHolder {
-  background:white;
+  background:none;
   z-index: 50;
+  position:absolute;
+  left:50%;
+  top:10%;
+}
+
+#vidinner {
+  position:relative;
+  left:-50%;
+}
+
+#grayout {
+  position: absolute;
+  top:0;
+  left:0;
+  background: rgba(100,100,100,.4);
+  width:100%;
+  height:100vh;
 }
 
 .popoutHolder img {

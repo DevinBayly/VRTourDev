@@ -3,9 +3,16 @@
 let svgDraw = (imagepath, roiIds) => {
   let ob = {}
   // create the "go back to landing page icon in the top left"
+  let actionDiv
+  if (document.querySelector("#actions") == undefined) {
+    actionDiv = document.createElement("div")
+    actionDiv.id = "actions"
+    document.body.append(actionDiv)
+  }
   if (document.querySelector("#retnote") == undefined) {
     let returnDiv = document.createElement("div")
     returnDiv.id = "returnDiv"
+    returnDiv.className = "actionchild"
     let returnInstruction = document.createElement("p")
     returnInstruction.innerHTML = "Landing page"
     returnInstruction.id = "retnote"
@@ -17,12 +24,34 @@ let svgDraw = (imagepath, roiIds) => {
       returnDiv.append(returnInstruction)
     }
     returnDiv.addEventListener("click", () => {
-      window.location = "http://localhost:8000"
+      window.location = `http://${window.location.host}` // should take you back to landing even if on presentation site
       returnDiv.remove()
       // then go back to the previous page
 
     })
-    document.body.append(returnDiv)
+    actionDiv.append(returnDiv)
+  }
+  // create a play instructions video button
+  if (document.querySelector("#instructionVidButton") == undefined) {
+    let instructionVidButtonDiv = document.createElement("div")
+    instructionVidButtonDiv.id = "instructionVidButton"
+    instructionVidButtonDiv.className = "actionchild"
+    let text = document.createElement("p")
+    text.innerHTML = "Play Instruction Video"
+    let icon = new Image()
+    icon.src = "./resources/brand_icons/ua-brand-icons/ua-brand-icons-image-files/SVG/up-left-arrow.svg"
+    icon.onload = () => {
+      instructionVidButtonDiv.append(icon)
+      instructionVidButtonDiv.append(text)
+    }
+    instructionVidButtonDiv.addEventListener("click", () => {
+      console.log("trying to play video, this isn't quite setup yet");
+
+      // then go back to the previous page
+
+    })
+    actionDiv.append(instructionVidButtonDiv)
+
   }
 
   let svg = document.createElement("object")
