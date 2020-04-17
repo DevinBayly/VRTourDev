@@ -89,6 +89,7 @@ let videoPopout = () => {
   ob.create = (videofile, width, height, absPosRight = false) => {
     // assign location to the holder div and create a video element, and connect to src
     ob.base.create()
+
     let holder = ob.base.holder
     let innerHolder = document.createElement("div")
     innerHolder.id = "vidinner"
@@ -115,8 +116,9 @@ let videoPopout = () => {
     })
     //document.querySelector("#outer").prepend(holder)
     document.body.append(holder)
-    ob.derivableFunction = ()=> {
+    ob.base.derivableFunction = ()=> {
       // remove the style of gray on the html 
+      ob.backgrounddiv.remove()
     }
 
   }

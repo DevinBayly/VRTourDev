@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  </head>
+  <body>
+      <script>
+          AFRAME.registerComponent('mlisten', {
+  schema: {
+    popoutInnerHTML: { type: 'string' }
+  },
+  init: function () {
+    let el = this.el
+    let popout_html_file = this.data.popoutInnerHTML
+    this.el.addEventListener('mouseenter', function (e) {
+      // play with emissivity
+      el.setAttribute("material", "color", "#5ef7ff")
+      //el.setAttribute("material","emissiveIntensity","1")
+    })
+    this.el.addEventListener("mouseleave", function () {
+      //el.setAttribute("material", "emissiveIntensity",'.2')
+      el.setAttribute("material", "color", "white")
+    })
+    // this is if the html file was what was put in
+    //
+    this.el.addEventListener("click", function () {
+      // load whatever popout is needed for this part
+      if (popout_html_file !== "movement") {
+        let popoutItem = textPopout()
+        popoutItem.create(popout_html_file)
+      } else {
+        //move icon trannsfer to adjacent scene
+        //remove current scene and call new basic scene create
+        document.querySelector("a-scene").remove()
+        let basicscene = basicScene("art-one")
+        basicscene.create()
+      }
+
+    })
+  }
+})
+      </script>
+    <a-scene cursor="rayOrigin:mouse">
+        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:some.file" id="infotemplate1" rotation="-179.9998479605043 -19.40436164769559 -179.9998479605043" position="1.36454 3.00972 7.31554"></a-circle>
+        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:some.file" id="infotemplate2" rotation="22.54932698516868 73.00914704454516 6.7712152228560685" position="-10.201 6.904 -2.84"></a-circle>
+        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:some.file" id="infotemplate3" rotation="0 -76.454 0" position="9.42586 3.05927 -3.836"></a-circle>
+        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: moveicon.png" mlisten="movement" id="movetemplate" position="-4.88955 -2.42177 -3.08779" rotation="-88.88408867423487 0.9734552939272687 41.102273349299864"></a-circle>
+       <a-sky src="DB5-V art tour/insta-360/entner_flora_loose_group.jpg"></a-sky> 
+    </a-scene>
+  </body>
+</html>

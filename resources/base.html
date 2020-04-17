@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  </head>
+  <body>
+      <script>
+          {script}
+      </script>
+    <a-scene>
+        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="some.file" id="infotemplate" position="2.10615 0 -1.82087"></a-circle>
+        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: moveicon.png" mlisten="movement" id="movetemplate" position="-4.88955 -2.42177 -3.08779" rotation="-88.88408867423487 0.9734552939272687 41.102273349299864"></a-circle>
+       <a-sky src="{image}"></a-sky> 
+    </a-scene>
+  </body>
+</html>

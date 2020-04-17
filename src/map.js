@@ -89,10 +89,17 @@ let svgDraw = (imagepath, roiIds) => {
           child.style.setProperty("fill", col)
         }
         ele.onclick = () => {
-          // nav to specific page
-          let basicscene = basicScene(roiId)
-          // create loading window
-          basicscene.create()
+          //// nav to specific page
+          //let basicscene = basicScene(roiId)
+          //// create loading window
+          //basicscene.create()
+          console.log("region id",roiId)
+          
+          let a = document.createElement("a")
+          a.setAttribute("target","_blank")
+          a.href = `resources/${roiId}.html`
+          a.click()
+
 
         }
       }

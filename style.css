@@ -128,6 +128,19 @@ body {
     padding: 54px;
 
 }
+#topimg {
+  display:flex;
+  justify-content: space-between;
+  width:100%;
+}
+
+#bio5img {
+  height:100px;
+}
+#UAimg {
+  width:100px;
+}
+
 #tour-links {
   display:flex;
   width:50%;
@@ -141,6 +154,7 @@ body {
 .intro-text {
   width:60%;
   margin:0 auto;
+  text-align: center;
   font-family:MiloOt-Exlig;
 }
 

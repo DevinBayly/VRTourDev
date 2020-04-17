@@ -1,0 +1,26 @@
+{
+  "name": "VRTourDev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "d3_progress_bar.js",
+  "dependencies": {
+    "aframe-watcher": "^1.4.0",
+    "reload": "^3.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "$(npm bin)/reload -b"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevinBayly/VRTourDev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevinBayly/VRTourDev/issues"
+  },
+  "homepage": "https://github.com/DevinBayly/VRTourDev#readme"
+}
