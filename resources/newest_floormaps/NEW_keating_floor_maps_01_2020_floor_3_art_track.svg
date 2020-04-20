@@ -72,6 +72,7 @@
          class="cls-3"
          cx="554.77"
          cy="283.91"
+         data-name="Emmi Whitehorse Salmon Berry II"
          r="12.89"
          id="circle232" />
     </g>
@@ -80,6 +81,7 @@
        data-name="Heather Green Living Cosmos">
       <circle
          class="cls-3"
+         data-name="Heather Green Living Cosmos"
          cx="346.14"
          cy="288.26"
          r="12.89"

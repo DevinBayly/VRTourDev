@@ -1,6 +1,10 @@
 
 David_T_Kessler_Cats_Claw_Elegance:
   image: DB5-V art tour/insta-360/IMG_20191104_151639_00_008.jpg
+  name: David T Kessler
+  text: ""
+  pop_im: 
+    - artist_pictures/David T Kessler/David T Kessler - Cat_s Claw Elegance - Acrylic on Aluminum - 2006 - PC - 12MB.png
   json:
     icons:
     - type: info
@@ -9,6 +13,10 @@ David_T_Kessler_Cats_Claw_Elegance:
       popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
 Barry_Entner_Flora_Loose_Group:
   image: DB5-V art tour/insta-360/entner_flora_loose_group.jpg
+  name: Barry Entner
+  text: "TBA"
+  pop_im: 
+    - artist_pictures/Barry Entner/Barry Entner - Flora Loose Group Amethyst - Sculptured Glass - 2006 - 1MB.JPG
   json:
     camera: 0 -150 0
     icons:
@@ -26,6 +34,8 @@ Barry_Entner_Flora_Loose_Group:
       popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
 Michael_Comb_New_Map_of_Hope:
   image: DB5-V art tour/insta-360/IMG_20191104_152305_00_020.jpg
+  pop_im:
+    - artist_pictures/Michael Holcomb/Michael Holcomb - New Map of Hope - Print - 2006 - 22MB.png
   json:
     icons:
     - type: info
@@ -34,6 +44,8 @@ Michael_Comb_New_Map_of_Hope:
       popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
 Maurice_J._Sevigny_The_Biomarble_Series:
   image: DB5-V art tour/insta-360/IMG_20191104_151231_00_004.jpg
+  pop_im:
+    - artist_pictures/Maurice Sevigny/maurice sevigny the biomarble series.jpg
   json:
     icons:
     - type: info
@@ -42,6 +54,8 @@ Maurice_J._Sevigny_The_Biomarble_Series:
       popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
 Barbara_Rogers_Ordinary_Miracles:
   image: DB5-V art tour/insta-360/IMG_20191104_151102_00_001.jpg
+  pop_im:
+    - artist_pictures/Barbara Rogers/OrdinaryMiracles1.png
   json:
     sky: -1.14 0 0
     camera: 0 90 0
@@ -68,6 +82,8 @@ Emmi_Whitehorse_Condon_Sequence:
       popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
 Emmi_Whitehorse_Water_Cure:
   image: DB5-V art tour/insta-360/emmi-whitehorse-watercure.jpg
+  pop_im:
+    - artist_pictures/Emmi Whitehorse/emmi whitehorse water cure.jpg
   json:
     camera: 0 -90 0
     icons:
@@ -77,6 +93,8 @@ Emmi_Whitehorse_Water_Cure:
       popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
 Emmi_Whitehorse_Salmon_Berry_II:
   image: DB5-V art tour/insta-360/emmi-whitehorse-salmonberry.jpg
+  pop_im:
+    - artist_pictures/Emmi Whitehorse/Emmi Whitehorse - Salmon Berry II B (diptych) - 2005 - 19MB.png
   json:
     icons:
     - type: info
@@ -85,6 +103,28 @@ Emmi_Whitehorse_Salmon_Berry_II:
       popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
 Barbara_Rogers_Hothouse_hyrbids:
   image: DB5-V art tour/insta-360/barbara-rogers-hothousehybrids.jpg
+  pop_im:
+    - artist_pictures/Barbara Rogers/HothouseHybrids4.jpg
+  json:
+    icons:
+    - type: info
+      position: -5 0 -8
+      rotation: 0 40 0
+      popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
+David_T_Kessler_Undercut_Elegance:
+  image: DB5-V art tour/insta-360/david_kessler_undercut_excellence.jpg
+  pop_im:
+    - artist_pictures/David T Kessler/David T Kessler - Undercut Elegance - Acrylic on Aluminum - 2006 - (PC) - 13MB.png
+  json:
+    icons:
+    - type: info
+      position: -5 0 -8
+      rotation: 0 40 0
+      popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
+Jackson_Boelts_DNA_Sequence_red_maize:
+  image: DB5-V art tour/insta-360/JacksonBoelts_red_maize.jpg
+  pop_im:
+    - artist_pictures/Jackson Boelts/jackson boelts DNA_Sequence_Red_Maize.jpg
   json:
     icons:
     - type: info
@@ -93,6 +133,8 @@ Barbara_Rogers_Hothouse_hyrbids:
       popout_html_file: DB5-V art tour/popouts/david_t_kessler.html
 Barbara_Rogers_A_Clear_Day_In_The_Valley:
   image: DB5-V art tour/insta-360/barbara-rogers-clearday.jpg
+  pop_im:
+    - artist_pictures/Barbara Rogers/barbara rogers_clear day in the valleyjpg.jpg
   json:
     icons:
     - type: info

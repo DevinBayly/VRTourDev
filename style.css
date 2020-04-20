@@ -133,6 +133,10 @@ body {
   justify-content: space-between;
   width:100%;
 }
+#toplogo {
+    height:50px;
+    object-fit: cover;
+}
 
 #bio5img {
   height:100px;

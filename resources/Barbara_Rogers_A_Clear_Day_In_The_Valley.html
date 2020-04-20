@@ -1,48 +1,76 @@
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  </head>
-  <body>
-      <script>
-          AFRAME.registerComponent('mlisten', {
-  schema: {
-    popoutInnerHTML: { type: 'string' }
-  },
-  init: function () {
-    let el = this.el
-    let popout_html_file = this.data.popoutInnerHTML
-    this.el.addEventListener('mouseenter', function (e) {
-      // play with emissivity
-      el.setAttribute("material", "color", "#5ef7ff")
-      //el.setAttribute("material","emissiveIntensity","1")
-    })
-    this.el.addEventListener("mouseleave", function () {
-      //el.setAttribute("material", "emissiveIntensity",'.2')
-      el.setAttribute("material", "color", "white")
-    })
-    // this is if the html file was what was put in
-    //
-    this.el.addEventListener("click", function () {
-      // load whatever popout is needed for this part
-      if (popout_html_file !== "movement") {
-        let popoutItem = textPopout()
-        popoutItem.create(popout_html_file)
-      } else {
-        //move icon trannsfer to adjacent scene
-        //remove current scene and call new basic scene create
-        document.querySelector("a-scene").remove()
-        let basicscene = basicScene("art-one")
-        basicscene.create()
-      }
+<head>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <style>
+    iframe { position: absolute; top: 0px; left:0px; width: 50%; height: 100%; border:black solid 2px; }
+  </style>
+</head>
+<body>
+  <script>
+    // create function that loads an iframe of the popout page in this page
+    let createTextPopout = (filehtml) => {
+      // test with just loading the art_popout_bootstrap.html
+      let iframeElement = document.createElement("iframe")
+      iframeElement.src = filehtml
+      document.body.append(iframeElement)
+      // bind the close button
+      // recursive timeout till selection passes
+      let closeInt = setInterval(() => {
+        let btn = iframeElement.contentDocument.querySelector("button")
+        if (btn) {
+          btn.addEventListener("click", () => {
+            document.querySelector("iframe").remove()
+          })
+          clearInterval(closeInt)
+        }
+      },1000)
+      iframeElement.contentDocument.querySelector("button").addEventListener("click", () => {
+        document.querySelector("iframe").remove()
+      })
+    }
+  </script>
+  <script>
+    AFRAME.registerComponent('mlisten', {
+      schema: {
+        popoutInnerHTML: { type: 'string' }
+      },
+      init: function () {
+        let el = this.el
+        let popout_html_file = this.data.popoutInnerHTML
+        this.el.addEventListener('mouseenter', function (e) {
+          // play with emissivity
+          el.setAttribute("material", "color", "#5ef7ff")
+          //el.setAttribute("material","emissiveIntensity","1")
+        })
+        this.el.addEventListener("mouseleave", function () {
+          //el.setAttribute("material", "emissiveIntensity",'.2')
+          el.setAttribute("material", "color", "white")
+        })
+        // this is if the html file was what was put in
+        //
+        this.el.addEventListener("click", function () {
+          console.log("cilcked on info");
 
+          // load whatever popout is needed for this part
+          if (popout_html_file !== "movement") {
+            createTextPopout(popout_html_file)
+          } else {
+            //move icon trannsfer to adjacent scene
+            //remove current scene and call new basic scene create
+            document.querySelector("a-scene").remove()
+            let basicscene = basicScene("art-one")
+            basicscene.create()
+          }
+
+        })
+      }
     })
-  }
-})
-      </script>
-    <a-scene>
-        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="some.file" id="infotemplate" position="2.10615 0 -1.82087"></a-circle>
-        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: moveicon.png" mlisten="movement" id="movetemplate" position="-4.88955 -2.42177 -3.08779" rotation="-88.88408867423487 0.9734552939272687 41.102273349299864"></a-circle>
+  </script>
+  <a-scene cursor="rayOrigin: mouse">
+    <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Barbara_Rogers_A_Clear_Day_In_The_Valley_popout.html"
+      id="infotemplate" position="2.10615 0 -1.82087"></a-circle>
        <a-sky src="DB5-V art tour/insta-360/barbara-rogers-clearday.jpg"></a-sky> 
-    </a-scene>
-  </body>
+  </a-scene>
+</body>
+
 </html>
