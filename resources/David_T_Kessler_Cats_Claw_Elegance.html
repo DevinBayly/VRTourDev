@@ -1,10 +1,19 @@
 <html>
+
 <head>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <style>
-    iframe { position: absolute; top: 0px; left:0px; width: 50%; height: 100%; border:black solid 2px; }
+    iframe {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 50%;
+      height: 100%;
+      border: black solid 2px;
+    }
   </style>
 </head>
+
 <body>
   <script>
     // create function that loads an iframe of the popout page in this page
@@ -23,7 +32,7 @@
           })
           clearInterval(closeInt)
         }
-      },1000)
+      }, 1000)
       iframeElement.contentDocument.querySelector("button").addEventListener("click", () => {
         document.querySelector("iframe").remove()
       })
@@ -66,10 +75,47 @@
       }
     })
   </script>
+  <div id="loaderHolder">
+    <div class="loader">
+
+    </div>
+  </div>
+  <style>
+    #loaderHolder {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      /* Light grey */
+      border-top: 16px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
   <a-scene cursor="rayOrigin: mouse">
-    <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:David_T_Kessler_Cats_Claw_Elegance_popout.html"
-      id="catsclaw" rotation="0 54.02762824965612 0" position="-20 15 -16"></a-circle>
-       <a-sky src="DB5-V art tour/insta-360/IMG_20191104_151639_00_008.jpg"></a-sky> 
+    <a-camera id="clawcam" position="0 0 0"></a-camera>
+    <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
+      mlisten="popoutInnerHTML:David_T_Kessler_Cats_Claw_Elegance_popout.html" id="catsclaw"
+      rotation="0 54.02762824965612 0" position="-20 15 -16"></a-circle>
+    <a-sky src="DB5-V art tour/insta-360/IMG_20191104_151639_00_008.jpg"></a-sky>
   </a-scene>
 </body>
 

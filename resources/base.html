@@ -66,7 +66,38 @@
       }}
     }})
   </script>
+  
+  <div id="loaderHolder">
+  <div class="loader">
+
+  </div>
+  </div>
+  <style>
+
+#loaderHolder {
+  height:100%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+  .loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  </style>
   <a-scene cursor="rayOrigin: mouse">
+    <a-camera id="clawcam" position="0 0 0"></a-camera>
+
     <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:{popout_name}_popout.html"
       id="infotemplate" rotation="0 54.02762824965611 0" position="-8.74902 3.53636 -2.00736"></a-circle>
        <a-sky src="{image}"></a-sky> 
