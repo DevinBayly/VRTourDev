@@ -45,6 +45,7 @@
 <style
    type="text/css"
    id="style1628">
+  .cls-3{fill:#ef4056;}
 	.st0{fill:#54C0A2;stroke:#000000;stroke-miterlimit:10;}
 	.st1{fill:#D9E021;stroke:#000000;stroke-miterlimit:10;}
 	.st2{fill:#3A4DA1;stroke:#000000;stroke-miterlimit:10;}
@@ -76,7 +77,7 @@
      data-name="Gregory West Fiddlers Dream"
      r="10.88"
      id="circle18"
-     style="fill:#ef4056" /></g><g
+      /></g><g
    transform="translate(223.47775,303.58317)"
    id="student_2"><circle
      class="cls-3"
@@ -85,7 +86,7 @@
      data-name="Gregory West Fiddlers Dream"
      r="10.88"
      id="circle18-6"
-     style="fill:#ef4056" /></g><g
+      /></g><g
    transform="translate(106.55951,-17.345474)"
    id="student_3"><circle
      class="cls-3"
@@ -94,7 +95,7 @@
      data-name="Gregory West Fiddlers Dream"
      r="10.88"
      id="circle18-5"
-     style="fill:#ef4056" /></g><g
+      /></g><g
    transform="translate(-106.99524,33.955388)"
    id="student_4"><circle
      class="cls-3"
@@ -103,7 +104,7 @@
      data-name="Gregory West Fiddlers Dream"
      r="10.88"
      id="circle18-62"
-     style="fill:#ef4056" /></g><g
+      /></g><g
    transform="translate(-98.643933,365.62142)"
    id="student_5"><circle
      class="cls-3"
@@ -112,7 +113,7 @@
      data-name="Gregory West Fiddlers Dream"
      r="10.88"
      id="circle18-1"
-     style="fill:#ef4056" /></g><g
+      /></g><g
    transform="translate(-141.59349,320.28578)"
    id="student_6"><circle
      class="cls-3"
@@ -121,7 +122,7 @@
      data-name="Gregory West Fiddlers Dream"
      r="10.88"
      id="circle18-7"
-     style="fill:#ef4056" /></g><g
+      /></g><g
    transform="translate(196.03776,-14.959387)"
    id="student_7"><circle
      class="cls-3"
@@ -130,4 +131,4 @@
      data-name="Gregory West Fiddlers Dream"
      r="10.88"
      id="circle18-9"
-     style="fill:#ef4056" /></g></svg>
+      /></g></svg>
