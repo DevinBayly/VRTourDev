@@ -11,7 +11,7 @@
     <!-- Compiled and minified UA Bootstrap CSS, icon font not included -->
     <link rel="stylesheet"
         href="https://cdn.uadigital.arizona.edu/lib/ua-bootstrap/v1.0.0-beta.26/ua-bootstrap.min.css">
-    <link rel="stylesheet" href="my_style.css">
+    <link rel="stylesheet" href="style.css">
     </link>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -20,25 +20,33 @@
 </head>
 
 <body>
-    <header id="header_site" class="header" role="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <img id="headerImg" src="resources/logo.png" alt="">
-                </div>
-                <div class="col-md-8">
-                    <h1>Virtual Reality Tour</h1>
+
+    <header class="bg-blue">
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img id="toplogo" src="resources/logo.png" alt="bio5 logo">
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </header>
     <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Virtual Reality Tour</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <ul class="nav nav-tabs">
-            <li role="presentation"><a href="../">VR Home Page</a></li>
-            <li role="presentation" ><a href="art_tour_bootstrap.html">Art Exhibition</a></li>
+            <li role="presentation"><a href="../">Home Page</a></li>
+            <li role="presentation"><a href="art_tour_bootstrap.html">Art Exhibition</a></li>
             <li role="presentation"><a onclick="videoShow()">Replay Instruction Video</a></li>
-            <li role="presentation" class="active"><a href="student_experience_bootstrap.html">Student Experience</a></li>
-            <li role="presentation"><a href="https://bio5.org/">BIO5 Home Page</a></li>
+            <li role="presentation" class="active"><a href="student_experience_bootstrap.html">Student Experience</a>
+            </li>
+            <li role="presentation"><a href="https://bio5.org/">BIO5 Website</a></li>
         </ul>
     </div>
     <div class="container">
@@ -136,24 +144,59 @@
     <div id="video_elements">
         <div class="overlay">
 
-    </div>
-    <div id="video_top">
+        </div>
+        <div id="video_top">
 
-    <div class="container popout ">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-12 ">
-                <video id="instructions" src="resources/videos/dolbycanyon.m4v" controls autoplay></video>
+            <div class="container popout ">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 ">
+                        <video id="instructions" src="resources/videos/dolbycanyon.m4v" controls autoplay></video>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-default" onclick="videoHide()">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <button class="btn btn-default" onclick="videoHide()">Close</button>
-            </div>
-        </div>
     </div>
-    </div>
-    </div>
+    <footer role="contentinfo" class="bs-footer">
+        <div class="container text-center">
+            <hr>
+            <section id="block-stayconnected"
+                class="block block-block-content block-block-content7f6e8975-2061-4609-a46f-e13aab1bc92d clearfix">
 
+                <h2 class="block-title">Stay Connected</h2>
+
+
+
+                <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+                    <div class="stay-connected-wrapper"><a class="btn btn-outline"
+                            href="https://bio5.us5.list-manage.com/subscribe?u=6e4e43b7b401ccef2b4683679&amp;id=01340360ad"
+                            target="_blank" rel="noopener noreferrer">Subscribe to our newsletter</a></div>
+                </div>
+
+            </section>
+
+            <section id="block-finduson"
+                class="block block-block-content block-block-contented89e974-ea51-46f0-96b4-0d175141ea23 clearfix">
+
+                <h2 class="block-title">Find Us On</h2>
+
+
+
+                <div class="d-flex justify-content-center ">
+                    <a href="https://www.facebook.com/UAZBIO5/" rel="nofollow noopener noreferrer" target="_blank"><img
+                            src="resources/icon_facebook.png"></a>
+                    <a href="https://twitter.com/UAZBIO5" rel="nofollow noopener noreferrer" target="_blank"><img
+                            src="resources/icon_twitter.png"></a>
+                    <a href="http://www.linkedin.com/company/uaz-bio5-institute" rel="nofollow noopener noreferrer"
+                        target="_blank"><img src="resources/icon_linkedin.png"></a>
+                    </ul>
+                </div>
+        </div>
+    </footer>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
