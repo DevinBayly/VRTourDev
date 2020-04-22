@@ -86,3 +86,68 @@ for f in files:
         phile.write(contents)
 
     
+from io import StringIO
+## creating the student yml
+students = "Brittany Forte,Anthony Aguilar,Logan Beers,Ryan Hunt".replace(" ","_").split(",")
+student_dict = {s:dict(name=s,image="",scene_name="{}.html".format(s),popout_name="{}_popout.html".format(s)) for s in students}
+student_dict
+
+for s in students:
+  jpgs = [j for j in os.listdir(f"./{s}_final/") if ".JPG" in j and not "360" in j]
+  student_dict[s]["images"] = jpgs
+
+yml = YAML()
+withyml.dump(student_dict,s)
+import os  
+[os.makedirs(f"{name}_final") for name in students]
+
+## making base scenes
+os.getcwd()
+for s in students:
+  with open("student_base.html","r") as iphile:
+    with open(f"{s}_final/scene.html","w") as ophile:
+      ophile.write(iphile.read().format(name=s))
+## making popout scenes
+
+for s in students:
+  with open("student_popout_base.html","r") as iphile:
+    for i,im in enumerate(student_dict[s]["images"]):
+      with open(f"{s}_final/popout_{i}.html","w") as ophile:
+        ophile.write(iphile.read().format(name=s,image=im))
+
+
+
+
+with open("student_base.html","r") as phile:
+  contents = phile.read()
+
+import re
+noLines = contents.replace("\n","---")
+p1 = re.sub("{---\s+?{","xxx",noLines)
+p2  =re.sub("}---\s+?}","yyy",p1)
+with open("/tmp/test","w") as phile:
+  phile.write(p2)
+""" {
+,.
+  content
+} {name}""".format(name="it")
+
+
+## replace all {} with {{}} 
+
+with open("student_base.html","r") as phile:
+  contents = phile.read()
+
+
+p1 = re.sub(r"\{(?!name)","{{",contents)
+p2 = re.sub(r"(?<!name)\}","}}",p1)
+with open("/tmp/test.html","w") as phile:
+  phile.write(p2)
+
+
+os.getcwd()
+import shutil
+for s in students:
+  shutil.copy("info.png",f"{s}_final/info.png")
+
+

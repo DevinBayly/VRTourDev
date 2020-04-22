@@ -1,7 +1,7 @@
 //close video functions
 let videoHide =()=> {
     // make video go back to 0 and stop then hide
-    let vid = document.querySelector("video")
+    let vid = document.querySelector("audio")
     vid.pause()
     vid.currentTime = 0
    document.querySelector("#video_elements").style.visibility = "hidden"
@@ -15,7 +15,7 @@ let mapSvg
 let sceneInfo
 let floorSelection = (floor) => {
     // options here
-    let floorFile = "tricomplex.svg"
+    let floorFile = "tri_map.svg"
     d3.xml(`resources/${floorFile}`).then(data => {
         // append using node
         if (mapSvg != undefined) {
@@ -50,6 +50,17 @@ let floorSelection = (floor) => {
 
 
 window.onload = async () => {
+        // check for cookie
+    if (document.cookie.match(/watched_video/)) {
+        console.log(document.cookie)
+        // prevent video from showing
+        videoHide()
+    } else {
+        console.log("didn't have cookie")
+        let expiryDate =new Date()
+        expiryDate.setDate(expiryDate.getDate()+1)
+        document.cookie = `watched_video=true;expires=${new Date(expiryDate.getTime())}`
+    }
     sceneInfo = await fetch("./resources/sceneinfo.yml").then(res => res.text()).then(t => {
         //convert into a json object with the jsyaml library
         return jsyaml.safeLoad(t)
