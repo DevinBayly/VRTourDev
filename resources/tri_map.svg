@@ -76,6 +76,7 @@
      cy="765.90906"
      cx="681.75037"
      class="cls-3"
+     data-name="Logan_Beers"
      id="Logan_Beers"
      />
   <circle
@@ -83,6 +84,7 @@
      cy="738.12903"
      cx="835.79034"
      class="cls-3"
+     data-name="Ryan_Hunt"
      id="Ryan_Hunt"
      />
   <circle
@@ -98,6 +100,7 @@
      cy="918.76904"
      cx="515.06036"
      class="cls-3"
+     data-name="Brittany_Forte"
      id="Brittany_Forte"
      />
 </svg>

@@ -34,11 +34,11 @@ let floorSelection = (floor) => {
         })
         cirs.on("click", function (d) {
             let cir = d3.select(this)
-            let name = cir.attr("data-name").replace(/ /g, "_")
+            let name = cir.attr("data-name")
             // load correct scene and make new tab of the scene
             let a = document.createElement("a")
             a.setAttribute("target", "_blank")
-            a.href = `resources/${name}.html`
+            a.href = `resources/${name}_final/scene.html`
             a.click()
 
 
