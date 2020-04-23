@@ -11,22 +11,54 @@
                 height: 100%;
                 border: black solid 2px;
             }
+            
+        #audio {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+
+        #audio img {
+            height: 40px;
+            border-radius:10px;
+        }
+
+        #audioOn {
+            border: #1e94aa solid 2px;
+        }
+        #audioOff {
+            border:#e37081 solid 2px
+        }
     </style>
     <script>
-        if (!document.cookie.match(/Anthony_Aguilar/)) {
-                // create cookie and otherwise load audio
-                let expiryDate = new Date()
-                expiryDate.setDate(expiryDate.getDate() + 1)
-                document.cookie = `Anthony_Aguilar_heard_audio=true;expires=${ new Date(expiryDate.getTime()) }`
-                // timeout and start
-                setTimeout(() => {
-
-                    // cookie detection and audio creation otherwise
-                    let audio = document.createElement("audio")
-                    audio.src = "Anthony_Aguilar.mp3"
-                    audio.play()
-                }, 2000)
+         let audioOb = () => {
+            let ob = {}
+            ob.on = false
+            ob.create = () => {
+                ob.audio = document.createElement("audio")
+                ob.audio.src = "Anthony_Aguilar.mp3"
             }
+
+            ob.toggle = () => {
+                ob.img = document.querySelector("#audio img")
+                ob.on = !ob.on
+                if (ob.on) {
+                    // play audio
+                    ob.audio.play()
+                    // change style of icon
+                    ob.img.id ="audioOn"
+                } else {
+                    ob.audio.pause()
+                    ob.img.id="audioOff"
+
+                }
+
+
+            }
+            return ob
+        }
+        let anthonyAudio = audioOb()
+        anthonyAudio.create()
     </script>
 </head>
 
@@ -126,6 +158,9 @@
             }
     </style>
     <a-scene cursor="rayOrigin: mouse">
+    <a-assets>
+    <img id="360-image" src="360_scene.jpg">
+    </a-assets>
         <a-camera id="Anthony_Aguilar_cam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0"></a-camera>
 
         <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
@@ -134,8 +169,10 @@
         <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
             mlisten="popoutInnerHTML:popout_1.html" id="Anthony_Aguilar_circle_2" rotation="0 121.7827523128516 0"
             position="-16.80523 -5.68136 11.09496"></a-circle>
-        <a-sky src="360_scene.jpg"></a-sky>
+        <a-sky src="#360-image"></a-sky>
     </a-scene>
+        <div id="audio">
+        <img id="audioOff" src="../audio_icon.svg" alt="" onclick="anthonyAudio.toggle()"></div>
 </body>
 
 </html>

@@ -88,7 +88,7 @@ for f in files:
     
 from io import StringIO
 ## creating the student yml
-students = "Brittany Forte,Anthony Aguilar,Logan Beers,Ryan Hunt".replace(" ","_").split(",")
+students = "Brittany Uhlorn,Anthony Aguilar,Logan Beers,Ryan Hunt".replace(" ","_").split(",")
 student_dict = {s:dict(name=s,image="",scene_name="{}.html".format(s),popout_name="{}_popout.html".format(s)) for s in students}
 student_dict
 
@@ -111,9 +111,10 @@ for s in students:
 
 for s in students:
   with open("student_popout_base.html","r") as iphile:
+    base = iphile.read()
     for i,im in enumerate(student_dict[s]["images"]):
       with open(f"{s}_final/popout_{i}.html","w") as ophile:
-        ophile.write(iphile.read().format(name=s,image=im))
+        ophile.write(base.format(name=s.replace("_"," "),image=im))
 
 
 

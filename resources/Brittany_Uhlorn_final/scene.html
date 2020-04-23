@@ -1,0 +1,181 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <style>
+        iframe {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 50%;
+            height: 100%;
+            border: black solid 2px;
+        }
+
+        #audio {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+
+        #audio img {
+            height: 40px;
+            border-radius:10px;
+        }
+
+        #audioOn {
+            border: #1e94aa solid 2px;
+        }
+        #audioOff {
+            border:#e37081 solid 2px
+        }
+    </style>
+    <script>
+        let audioOb = () => {
+            let ob = {}
+            ob.on = false
+            ob.create = () => {
+                ob.audio = document.createElement("audio")
+                ob.audio.src = "Brittany_Uhlorn.mp3"
+            }
+
+            ob.toggle = () => {
+                ob.img = document.querySelector("#audio img")
+                ob.on = !ob.on
+                if (ob.on) {
+                    // play audio
+                    ob.audio.play()
+                    // change style of icon
+                    ob.img.id ="audioOn"
+                } else {
+                    ob.audio.pause()
+                    ob.img.id="audioOff"
+
+                }
+
+
+            }
+            return ob
+        }
+        let britAudio = audioOb()
+        britAudio.create()
+
+    </script>
+</head>
+
+<body>
+    <script>
+        // create function that loads an iframe of the popout page in this page
+        let createTextPopout = (filehtml) => {
+            // test with just loading the art_popout_bootstrap.html
+            let iframeElement = document.createElement("iframe")
+            iframeElement.src = filehtml
+            document.body.append(iframeElement)
+            // bind the close button
+            // recursive timeout till selection passes
+            let closeInt = setInterval(() => {
+                let btn = iframeElement.contentDocument.querySelector("button")
+                if (btn) {
+                    btn.addEventListener("click", () => {
+                        document.querySelector("iframe").remove()
+                    })
+                    clearInterval(closeInt)
+                }
+            }, 1000)
+            iframeElement.contentDocument.querySelector("button").addEventListener("click", () => {
+                document.querySelector("iframe").remove()
+            })
+        }
+    </script>
+    <script>
+        AFRAME.registerComponent('mlisten', {
+            schema: {
+                popoutInnerHTML: { type: 'string' }
+            },
+            init: function () {
+                let el = this.el
+                let popout_html_file = this.data.popoutInnerHTML
+                this.el.addEventListener('mouseenter', function (e) {
+                    // play with emissivity
+                    el.setAttribute("material", "color", "#5ef7ff")
+                    //el.setAttribute("material","emissiveIntensity","1")
+                })
+                this.el.addEventListener("mouseleave", function () {
+                    //el.setAttribute("material", "emissiveIntensity",'.2')
+                    el.setAttribute("material", "color", "white")
+                })
+                // this is if the html file was what was put in
+                //
+                this.el.addEventListener("click", function () {
+                    console.log("cilcked on info");
+
+                    // load whatever popout is needed for this part
+                    if (popout_html_file !== "movement") {
+                        createTextPopout(popout_html_file)
+                    } else {
+                        //move icon trannsfer to adjacent scene
+                        //remove current scene and call new basic scene create
+                        document.querySelector("a-scene").remove()
+                        let basicscene = basicScene("art-one")
+                        basicscene.create()
+                    }
+
+                })
+            }
+        })
+    </script>
+
+    <div id="loaderHolder">
+        <div class="loader">
+
+        </div>
+    </div>
+    <style>
+        #loaderHolder {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            /* Light grey */
+            border-top: 16px solid #3498db;
+            /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+    </style>
+    <a-scene cursor="rayOrigin: mouse">
+    <a-assets>
+    <img id="360-image" src="360_scene.jpg">
+    </a-assets>
+        <a-camera id="Brittany_Uhlorn_cam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0">
+        </a-camera>
+
+        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
+            mlisten="popoutInnerHTML:popout_0.html" id="Brittany_Uhlorn_circle_1" rotation="0 54.02762824965612 0"
+            position="-15.00609 0.21709 -13.02805"></a-circle>
+        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
+            mlisten="popoutInnerHTML:popout_1.html" id="Brittany_Uhlorn_circle_2" rotation="0 72.05574527344746 0"
+            position="-14.26734 -0.31432 -2.00736"></a-circle>
+        <a-sky src="#360-image"></a-sky>
+    </a-scene>
+    <div id="audio">
+        <img id="audioOff" src="../audio_icon.svg" alt="" onclick="britAudio.toggle()"></div>
+</body>
+
+</html>
