@@ -4,14 +4,14 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <style>
         iframe {
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                width: 50%;
-                height: 100%;
-                border: black solid 2px;
-            }
-            
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 50%;
+            height: 100%;
+            border: black solid 2px;
+        }
+
         #audio {
             position: absolute;
             bottom: 0px;
@@ -20,23 +20,31 @@
 
         #audio img {
             height: 40px;
-            border-radius:10px;
+            border-radius: 10px;
         }
 
         #audioOn {
             border: #1e94aa solid 2px;
         }
+
         #audioOff {
-            border:#e37081 solid 2px
+            border: #e37081 solid 2px
         }
     </style>
     <script>
-         let audioOb = () => {
+        let audioOb = () => {
             let ob = {}
             ob.on = false
             ob.create = () => {
                 ob.audio = document.createElement("audio")
                 ob.audio.src = "Anthony_Aguilar.mp3"
+                if (!document.cookie.match(/audio_heard_anthony=true/)) {
+                    console.log("didn't have cookie")
+                    let expiryDate = new Date()
+                    expiryDate.setDate(expiryDate.getDate() + 1)
+                    document.cookie = `audio_heard_anthony=true;expires=${new Date(expiryDate.getTime())}`
+                    ob.toggle()
+                }
             }
 
             ob.toggle = () => {
@@ -44,12 +52,14 @@
                 ob.on = !ob.on
                 if (ob.on) {
                     // play audio
-                    ob.audio.play()
+                    ob.audio.play().catch(error=> {
+                        alert("please enable autoplay of audio, click the play icon to left of internet address bar, https://support.mozilla.org/en-US/kb/block-autoplay,")
+                    })
                     // change style of icon
-                    ob.img.id ="audioOn"
+                    ob.img.id = "audioOn"
                 } else {
                     ob.audio.pause()
-                    ob.img.id="audioOff"
+                    ob.img.id = "audioOff"
 
                 }
 
@@ -57,8 +67,11 @@
             }
             return ob
         }
-        let anthonyAudio = audioOb()
-        anthonyAudio.create()
+        let anthonyAudio
+        window.onload = () => {
+            anthonyAudio = audioOb()
+            anthonyAudio.create()
+        }
     </script>
 </head>
 
@@ -66,61 +79,62 @@
     <script>
         // create function that loads an iframe of the popout page in this page
         let createTextPopout = (filehtml) => {
-                // test with just loading the art_popout_bootstrap.html
-                let iframeElement = document.createElement("iframe")
-                iframeElement.src = filehtml
-                document.body.append(iframeElement)
-                // bind the close button
-                // recursive timeout till selection passes
-                let closeInt = setInterval(() => {
-                        let btn = iframeElement.contentDocument.querySelector("button")
-                        if (btn) {
-                                btn.addEventListener("click", () => {
-                                        document.querySelector("iframe").remove()
-                                    })
-                                clearInterval(closeInt)
-                            }
-                    }, 1000)
-                iframeElement.contentDocument.querySelector("button").addEventListener("click", () => {
+            // test with just loading the art_popout_bootstrap.html
+            let iframeElement = document.createElement("iframe")
+            iframeElement.src = filehtml
+            document.body.append(iframeElement)
+            // bind the close button
+            // recursive timeout till selection passes
+            let closeInt = setInterval(() => {
+                let btn = iframeElement.contentDocument.querySelector("button")
+                if (btn) {
+                    btn.addEventListener("click", () => {
                         document.querySelector("iframe").remove()
                     })
-            }
+                    clearInterval(closeInt)
+                }
+            }, 1000)
+            iframeElement.contentDocument.querySelector("button").addEventListener("click", () => {
+                document.querySelector("iframe").remove()
+            })
+        }
     </script>
     <script>
         AFRAME.registerComponent('mlisten', {
             schema: {
-            popoutInnerHTML: { type: 'string' }},
+                popoutInnerHTML: { type: 'string' }
+            },
             init: function () {
-                    let el = this.el
-                    let popout_html_file = this.data.popoutInnerHTML
-                    this.el.addEventListener('mouseenter', function (e) {
-                            // play with emissivity
-                            el.setAttribute("material", "color", "#5ef7ff")
-                            //el.setAttribute("material","emissiveIntensity","1")
-                        })
-                    this.el.addEventListener("mouseleave", function () {
-                            //el.setAttribute("material", "emissiveIntensity",'.2')
-                            el.setAttribute("material", "color", "white")
-                        })
-                    // this is if the html file was what was put in
-                    //
-                    this.el.addEventListener("click", function () {
-                            console.log("cilcked on info");
+                let el = this.el
+                let popout_html_file = this.data.popoutInnerHTML
+                this.el.addEventListener('mouseenter', function (e) {
+                    // play with emissivity
+                    el.setAttribute("material", "color", "#5ef7ff")
+                    //el.setAttribute("material","emissiveIntensity","1")
+                })
+                this.el.addEventListener("mouseleave", function () {
+                    //el.setAttribute("material", "emissiveIntensity",'.2')
+                    el.setAttribute("material", "color", "white")
+                })
+                // this is if the html file was what was put in
+                //
+                this.el.addEventListener("click", function () {
+                    console.log("cilcked on info");
 
-                            // load whatever popout is needed for this part
-                            if (popout_html_file !== "movement") {
-                                    createTextPopout(popout_html_file)
-                                } else {
-                                    //move icon trannsfer to adjacent scene
-                                    //remove current scene and call new basic scene create
-                                    document.querySelector("a-scene").remove()
-                                    let basicscene = basicScene("art-one")
-                                    basicscene.create()
-                                }
+                    // load whatever popout is needed for this part
+                    if (popout_html_file !== "movement") {
+                        createTextPopout(popout_html_file)
+                    } else {
+                        //move icon trannsfer to adjacent scene
+                        //remove current scene and call new basic scene create
+                        document.querySelector("a-scene").remove()
+                        let basicscene = basicScene("art-one")
+                        basicscene.create()
+                    }
 
-                        })
-                }
-    })
+                })
+            }
+        })
     </script>
 
     <div id="loaderHolder">
@@ -158,20 +172,21 @@
             }
     </style>
     <a-scene cursor="rayOrigin: mouse">
-    <a-assets>
-    <img id="360-image" src="360_scene.jpg">
-    </a-assets>
-        <a-camera id="Anthony_Aguilar_cam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0"></a-camera>
+        <a-assets>
+            <img id="360-image" src="360_scene.jpg">
+        </a-assets>
+        <a-camera id="Anthony_Aguilar_cam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0">
+        </a-camera>
 
         <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
             mlisten="popoutInnerHTML:popout_0.html" id="Anthony_Aguilar_circle_1" rotation="0 110.65419305802564 0"
-            position="-16.59774 10.40649 2.83238"></a-circle>
+            position="-16.59774 6.2 4.79"></a-circle>
         <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
             mlisten="popoutInnerHTML:popout_1.html" id="Anthony_Aguilar_circle_2" rotation="0 121.7827523128516 0"
             position="-16.80523 -5.68136 11.09496"></a-circle>
         <a-sky src="#360-image"></a-sky>
     </a-scene>
-        <div id="audio">
+    <div id="audio">
         <img id="audioOff" src="../audio_icon.svg" alt="" onclick="anthonyAudio.toggle()"></div>
 </body>
 

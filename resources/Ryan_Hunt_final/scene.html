@@ -37,6 +37,14 @@
             ob.create = () => {
                 ob.audio = document.createElement("audio")
                 ob.audio.src = "Ryan_Hunt.mp3"
+
+                if (!document.cookie.match(/audio_heard_ryan=true/)) {
+                    console.log("didn't have cookie")
+                    let expiryDate = new Date()
+                    expiryDate.setDate(expiryDate.getDate() + 1)
+                    document.cookie = `audio_heard_ryan=true;expires=${new Date(expiryDate.getTime())}`
+                    ob.toggle()
+                }
             }
 
             ob.toggle = () => {
@@ -44,7 +52,9 @@
                 ob.on = !ob.on
                 if (ob.on) {
                     // play audio
-                    ob.audio.play()
+                    ob.audio.play().catch(error=> {
+                        alert("please enable autoplay of audio, click the play icon to left of internet address bar, https://support.mozilla.org/en-US/kb/block-autoplay,")
+                    })
                     // change style of icon
                     ob.img.id ="audioOn"
                 } else {
@@ -57,8 +67,11 @@
             }
             return ob
         }
-        let ryanAudio = audioOb()
-        ryanAudio.create()
+        let ryanAudio
+        window.onload = () => {
+            ryanAudio = audioOb()
+            ryanAudio.create()
+        }
     </script>
 </head>
 
