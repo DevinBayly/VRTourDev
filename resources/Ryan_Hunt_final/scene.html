@@ -174,7 +174,9 @@
     <a-assets>
     <img id="360-image" src="360_scene.jpg">
     </a-assets>
-        <a-camera id="Ryan_Hunt_cam" rotation="-8.708958485988513 157.33421054292407 0" position="0 0 0"></a-camera>
+        <a-entity id="Ryan_Hunt_cam" rotation="-8.708958485988513 157.33421054292407 0" position="0 0 0">
+        <a-camera look-controls></a-camera>
+        </a-entity>
 
         <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
             mlisten="popoutInnerHTML:popout_0.html" id="Ryan_Hunt_circle_1" rotation="0 135.15787908238556 0"

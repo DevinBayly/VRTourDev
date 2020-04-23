@@ -174,7 +174,9 @@
     <a-assets>
     <img id="360-image" src="360_scene.jpg">
     </a-assets>
-        <a-camera id="Logan_Beers_cam" rotation="-4.470789675405814 90.07469497251672 0.06130648407899809" position="0 0 0"></a-camera>
+        <a-entity  id="Logan_Beers_cam" rotation="-4.470789675405814 90.07469497251672 0.06130648407899809" position="0 0 0">
+        <a-camera look-controls></a-camera>
+        </a-entity>
 
         <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
             mlisten="popoutInnerHTML:popout_0.html" id="Logan_Beers_circle_1" rotation="0 117.52510293723446 0"
