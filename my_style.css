@@ -25,13 +25,14 @@
     background:rgba(100,100,100,.7);
 }
 
-.popout {
+#popout {
     background:white;
     border-radius: 2em;
     border: white solid 2em;
     z-index: 9999;
     position:relative;
-    width:50%;
+   left:-50%;
+    width:unset;
 }
 #instructions {
     width:100%;
@@ -51,6 +52,6 @@ h4 {
 #video_top {
     position:absolute;
     top:25%;
-    left:0;
-    width:100%;
+
+    left:50%;
 }
