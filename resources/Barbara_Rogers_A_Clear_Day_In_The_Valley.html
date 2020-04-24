@@ -96,11 +96,20 @@
 }
   </style>
   <a-scene cursor="rayOrigin: mouse">
-    <a-camera id="clawcam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0"></a-camera>
+
+  <a-assets>
+    <img src="DB5-V art tour/insta-360/barbara-rogers-clearday.jpg" id="360-image" alt="">
+  </a-assets>
+  
+  <a-entity id="azmlr" position="0 0 0" rotation="-5.890006133944863 77.01526794809988 3.033238567422578">
+    <a-camera look-controls></a-camera>
+  </a-entity>
+
+  
 
     <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Barbara_Rogers_A_Clear_Day_In_The_Valley_popout.html"
       id="clearday" rotation="0 54.02762824965612 0" position="-20 3.53636 -18.57084"></a-circle>
-       <a-sky src="DB5-V art tour/insta-360/barbara-rogers-clearday.jpg"></a-sky> 
+       <a-sky id="eqfdd" src="#360-image"></a-sky> 
   </a-scene>
 </body>
 

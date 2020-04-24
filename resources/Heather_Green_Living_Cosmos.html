@@ -96,13 +96,22 @@
 }
   </style>
   <a-scene cursor="rayOrigin: mouse">
-    <a-camera id="clawcam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0"></a-camera>
+
+  <a-assets>
+    <img src="DB5-V art tour/insta-360/IMG_20191104_152433_00_024.jpg" id="360-image" alt="">
+  </a-assets>
+  
+  <a-entity id="dtudl" position="0 0 0" rotation="-14.571462645767095 -76.39418169817804 0.9390778262194192">
+    <a-camera look-controls></a-camera>
+  </a-entity>
+
+  
 
     <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Heather_Green_Living_Cosmos_popout.html"
       id="green" rotation="0 95.30637259985627 0" position="-12 8 2"></a-circle>
-    <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Michael_Holcomb_popout.html"
+    <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Michael_Holcomb_New_Map_of_Hope_popout.html"
       id="crazyswirls" rotation="0 -71.8070815903607 0" position="30 3.53636 -8"></a-circle>
-       <a-sky src="DB5-V art tour/insta-360/IMG_20191104_152433_00_024.jpg"></a-sky> 
+       <a-sky id="fnnvr" src="#360-image"></a-sky> 
   </a-scene>
 </body>
 

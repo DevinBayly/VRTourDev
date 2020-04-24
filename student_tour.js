@@ -1,77 +1,89 @@
 let activeInd = 0
-let d3_data = [{ name: "Brittany_Uhlorn", state: true },{ name: "Anthony_Aguilar", state: false }, { name: "Logan_Beers", state: false },  { name: "Ryan_Hunt", state: false }]
+let d3_data = [{ name: "Brittany_Uhlorn", state: true }, { name: "Anthony_Aguilar", state: false }, { name: "Logan_Beers", state: false }, { name: "Ryan_Hunt", state: false }]
+let animation_data = [[0, 0]]
+let tourContinue
 let visualBinding = () => {
     let ob = {}
     ob.round = 0
     ob.duration = 2000
-    ob.restart = ()=> {
-        let startCol,endCol
-        console.log("ob.round ",ob.round,)
-        if (Math.floor(ob.round/4)%2 == 0) {
-            startCol = "white"
-            endCol="green"
-        } else {
-            startCol = "green"
-            endCol="white"
+    tourContinue = true
+    ob.restart = () => {
+        if (!tourContinue) {
+            ob.marker.remove()
+            return
         }
-        console.log("ob.round ",ob.round,startCol,endCol)
+        setTimeout(ob.restart,ob.duration)
         console.log("starting over")
-        d3.selectAll("circle").attr("class", d => {
+        let startRad,endRad
+        if (ob.round % 2 == 0) {
+            startRad = 11
+            endRad = 30
+        } else {
+            endRad = 11
+            startRad = 30
+        }
+        ob.svg.selectAll("circle").each(function (d) {
             if (d.state) {
-                return ""
-            } else {
+                animation_data = [[d3.select(this).attr("cx"), d3.select(this).attr("cy")]]
 
-                return "cls-3"
             }
-        }).attr("fill", d => {
-            if (d.state) {
-                return d3.color(startCol)
-            }
-        }).transition()
+            return d3.select(this).attr("cx")
+        })
+        if (ob.round == 0) {
+            ob.marker = ob.svg.selectAll("#marker").data(animation_data).enter().append("circle")
+        } else {
+            ob.svg.select("#marker").data(animation_data)
+        }
+        ob.svg.selectAll(".cls-3").raise()
+            ob.marker.attr("id", "marker")
+            .attr("stroke","#ef4056")
+            .attr("stroke-width",3)
+            .attr("r",startRad)
+            .attr("fill-opacity",0)
+            .attr("cx",d=> {
+                return d[0]
+            })
+            .attr("cy",d=> {
+                return d[1]
+            })
+            .transition()
             .duration(ob.duration)
-            .attr("fill", d => {
-                if (d.state) {
-                    return d3.color(endCol)
-                }
-            }).on("end",ob.restart)
-            ob.round +=1
+            .ease(d3.easeLinear)
+            .attr("r",endRad)
+        ob.round+=1
 
     }
     ob.start = () => {
         console.log("starting again")
-        let svg = d3.select("svg")
-        svg.selectAll("circle").data(d3_data, function (d) {
+        ob.svg = d3.select("svg")
+        ob.svg.selectAll("circle").data(d3_data, function (d) {
             return (d && d.name) || d3.select(this).attr("data-name")
-        }).attr("class", d => {
-            if (d.state) {
-                return ""
-            } else {
-
-                return "cls-3"
-            }
-        }).attr("fill", d => {
-            if (d.state) {
-                return d3.color("green")
-            }
-        }).transition()
-            .duration(ob.duration)
-            .ease(d3.easeLinear)
-            .attr("fill", d => {
-                if (d.state) {
-                    return d3.color("white")
-                }
-            }).on("end",ob.restart)
-
+        })
+        ob.restart()
     }
     return ob
 }
-let selectScene =(student)=> {
-   d3.selectAll("circle").each(function(d,i) {
-       let cir = d3.select(this)
-       if (cir.attr("data-name") == student ) {
-           cir.dispatch("click")
-       }
-   })
+let selectScene = (student) => {
+    //change which has the active thing on it 
+    document.querySelector(`li#${student}`).className = "active"
+    d3_data.map(d=> {
+        // undo prev state
+        if (d.state) {
+            d.state = false
+        }
+    })
+    d3.selectAll("circle").each(function (d, i) {
+
+        // update state
+        if (student == d.name) {
+            d.state = true
+        }
+        if (d.state) {
+            // update animation data
+            animation_data = [[d3.select(this).attr("cx"),d3.select(this).attr("cy")]]
+        }
+
+    })
 }
 //close video functions
 let videoHide = () => {
@@ -110,22 +122,28 @@ let floorSelection = async (floor) => {
         cirs.on("click", function (d) {
             let cir = d3.select(this)
             let name = cir.attr("data-name")
+            cir.attr("fill","black")
+            cir.attr("class","visited")
             // load correct scene and make new tab of the scene
             let a = document.createElement("a")
             a.setAttribute("target", "_blank")
             a.href = `resources/${name}_final/scene.html`
-            for (let i=0;i< d3_data.length;i++) {
-                let d = d3_data[i]
-                if (i == activeInd) {
-                    d.state = false
-                }
-                if (i== activeInd+1) {
-                    d.state = true
-                }
-            }
-            // update the active selected student researcher
-            // color for already having visited
             a.click()
+            // see if it was the highlighted
+            // if so move up by one or else don't change
+            if (d.state) {
+                d.state = false
+                let next = d3_data.map(e=> e.name).indexOf(d.name)+1
+                if (d3_data[next] == undefined) {
+                    // completed tour
+                    //remove animation
+                    tourContinue = false
+                }
+                d3_data[next].state = true
+                // mark sidebar as complete
+                document.querySelector(`li#${d.name}`).className = "active"
+
+            }
 
 
 

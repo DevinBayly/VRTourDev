@@ -152,3 +152,47 @@ for s in students:
   shutil.copy("info.png",f"{s}_final/info.png")
 
 
+
+##
+import re
+import random
+import string
+htmls = [f for f in os.listdir() if "html" in f and "_" in f and not "popout" in f and not "py" in f and not "base" in f and not "codon" in f and not "condon" in f]
+
+for html in htmls:
+  print(html)
+  with open(html,"r") as phile:
+    contents = phile.read()
+  cameraLinePre =[l for l in contents.split("\n") if "a-camera" in l][0] 
+  skyLinePre =[l for l in contents.split("\n") if "a-sky" in l][0] 
+  ## substitute line where the camera is for asset + rig
+  ## substitute sky line for asset id
+  imagesrc = re.search(r"src=\".*?\"",skyLinePre).group(0)
+  assetsBlock = f"""
+  <a-assets>
+    <img {imagesrc} id="360-image" alt="">
+  </a-assets>
+  """
+  cameraLinePre
+  camid = "".join(random.choice(string.ascii_lowercase) for _ in range(5))
+  skyid = "".join(random.choice(string.ascii_lowercase) for _ in range(5))
+  position = re.search(r"position=\".*?\"",cameraLinePre).group(0)
+  rotation = re.search(r"rotation=\".*?\"",cameraLinePre).group(0)
+  cameraBlock = f"""
+  <a-entity id=\"{camid}\" {position} {rotation}>
+    <a-camera look-controls></a-camera>
+  </a-entity>
+
+  """
+  newSky = re.sub(r"src=\".*?\"","src=\"#360-image\" "+ f"id=\"{skyid}\"",skyLinePre)
+  new = []
+  for line in contents.split("\n"):
+    if line == cameraLinePre:
+      new.append(assetsBlock+cameraBlock) 
+    elif line == skyLinePre:
+      new.append(newSky)
+    else:
+      new.append(line)
+  with open("/tmp/"+html,"w") as ophile:
+    ophile.write("\n".join(new))
+

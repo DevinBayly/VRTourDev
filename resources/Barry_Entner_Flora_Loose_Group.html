@@ -96,7 +96,16 @@
 }
   </style>
   <a-scene cursor="rayOrigin: mouse">
-    <a-camera id="clawcam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0"></a-camera>
+
+  <a-assets>
+    <img src="DB5-V art tour/insta-360/entner_flora_loose_group.jpg" id="360-image" alt="">
+  </a-assets>
+  
+  <a-entity id="gobnr" position="0 0 0" rotation="-4.002683156783932 -161.72936978937258 -0.3850276383279132">
+    <a-camera look-controls></a-camera>
+  </a-entity>
+
+  
 
     <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Maurice_J._Sevigny_The_Biomarble_Series_popout.html"
       id="circle1" rotation="0 54.02762824965612 0" position="-20 3.53636 -5.59139"></a-circle>
@@ -104,7 +113,7 @@
       id="circle2" rotation="0 -180 0" position="8.44343 0 20"></a-circle>
     <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Emmi_whitehorse_codon_sequence.html"
       id="circle3" rotation="0 -44.74055534838059 0" position="20 6.29835 -9.96919"></a-circle>
-       <a-sky src="DB5-V art tour/insta-360/entner_flora_loose_group.jpg"></a-sky> 
+       <a-sky id="yqzgx" src="#360-image"></a-sky> 
   </a-scene>
 </body>
 

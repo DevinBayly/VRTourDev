@@ -96,11 +96,20 @@
 }
   </style>
   <a-scene cursor="rayOrigin: mouse">
-    <a-camera id="clawcam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0"></a-camera>
+
+  <a-assets>
+    <img src="DB5-V art tour/insta-360/emmi-whitehorse-salmonberry.jpg" id="360-image" alt="">
+  </a-assets>
+  
+  <a-entity id="piofn" position="0 0 0" rotation="-6.395927867045379 91.35582860242924 1.0255944532841736">
+    <a-camera look-controls></a-camera>
+  </a-entity>
+
+  
 
     <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Emmi_Whitehorse_Salmon_Berry_II_popout.html"
       id="salmonberry" rotation="0 91.99009288163906 0" position="-20 0.90608 0.52618"></a-circle>
-       <a-sky src="DB5-V art tour/insta-360/emmi-whitehorse-salmonberry.jpg"></a-sky> 
+       <a-sky id="ujvkt" src="#360-image"></a-sky> 
   </a-scene>
 </body>
 

@@ -96,11 +96,20 @@
 }
   </style>
   <a-scene cursor="rayOrigin: mouse">
-    <a-camera id="clawcam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0"></a-camera>
+
+  <a-assets>
+    <img src="DB5-V art tour/insta-360/IMG_20191104_152305_00_020.jpg" id="360-image" alt="">
+  </a-assets>
+  
+  <a-entity id="mtcjf" position="0 0 0" rotation="-14.55312799632291 -147.8196733969816 0">
+    <a-camera look-controls></a-camera>
+  </a-entity>
+
+  
 
     <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Michael_Comb_New_Map_of_Hope_popout.html"
       id="infotemplate" rotation="0 54.02762824965611 0" position="-8.74902 3.53636 -2.00736"></a-circle>
-       <a-sky src="DB5-V art tour/insta-360/IMG_20191104_152305_00_020.jpg"></a-sky> 
+       <a-sky id="mdzja" src="#360-image"></a-sky> 
   </a-scene>
 </body>
 
