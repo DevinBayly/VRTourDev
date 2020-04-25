@@ -55,3 +55,6 @@ h4 {
 
     left:50%;
 }
+#video_elements {
+    visibility: hidden;
+}

@@ -93,8 +93,10 @@ let videoHide = () => {
     vid.currentTime = 0
     document.querySelector("#video_elements").style.visibility = "hidden"
 }
-let videoShow = () => {
+let mediaShow = () => {
     document.querySelector("#video_elements").style.visibility = "visible"
+    let audio = document.querySelector("#video_elements audio")
+    audio.play()
 }
 
 // floor change functions
@@ -155,15 +157,15 @@ let floorSelection = async (floor) => {
 
 window.onload = async () => {
     // check for cookie
-    if (document.cookie.match(/watched_video/)) {
+    if (document.cookie.match(/watched_video=true/)) {
         console.log(document.cookie)
         // prevent video from showing
-        videoHide()
     } else {
         console.log("didn't have cookie")
         let expiryDate = new Date()
         expiryDate.setDate(expiryDate.getDate() + 1)
         document.cookie = `watched_video=true;expires=${new Date(expiryDate.getTime())}`
+        mediaShow()
     }
     sceneInfo = await fetch("./resources/sceneinfo.yml").then(res => res.text()).then(t => {
         //convert into a json object with the jsyaml library
