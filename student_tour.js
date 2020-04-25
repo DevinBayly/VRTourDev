@@ -12,9 +12,9 @@ let visualBinding = () => {
             ob.marker.remove()
             return
         }
-        setTimeout(ob.restart,ob.duration)
+        setTimeout(ob.restart, ob.duration)
         console.log("starting over")
-        let startRad,endRad
+        let startRad, endRad
         if (ob.round % 2 == 0) {
             startRad = 11
             endRad = 30
@@ -35,22 +35,22 @@ let visualBinding = () => {
             ob.svg.select("#marker").data(animation_data)
         }
         ob.svg.selectAll(".cls-3").raise()
-            ob.marker.attr("id", "marker")
-            .attr("stroke","#ef4056")
-            .attr("stroke-width",3)
-            .attr("r",startRad)
-            .attr("fill-opacity",0)
-            .attr("cx",d=> {
+        ob.marker.attr("id", "marker")
+            .attr("stroke", "#ef4056")
+            .attr("stroke-width", 3)
+            .attr("r", startRad)
+            .attr("fill-opacity", 0)
+            .attr("cx", d => {
                 return d[0]
             })
-            .attr("cy",d=> {
+            .attr("cy", d => {
                 return d[1]
             })
             .transition()
             .duration(ob.duration)
             .ease(d3.easeLinear)
-            .attr("r",endRad)
-        ob.round+=1
+            .attr("r", endRad)
+        ob.round += 1
 
     }
     ob.start = () => {
@@ -66,23 +66,23 @@ let visualBinding = () => {
 let selectScene = (student) => {
     //change which has the active thing on it 
     document.querySelector(`li#${student}`).className = "active"
-    d3_data.map(d=> {
-        // undo prev state
-        if (d.state) {
-            d.state = false
-        }
-    })
+    // if student is the active one move the active over one
     d3.selectAll("circle").each(function (d, i) {
-
         // update state
-        if (student == d.name) {
-            d.state = true
+        if (student == d.name && d.state) {
+            d.state = false
+            // trigger the click
+            d3.select(this).dispatch("click")
+            // update which is targeted
+            d3_data[d3_data.map(d => d.name).indexOf(student) + 1].state = true
         }
+
+    })
+    d3.selectAll("circle").each(function (d) {
         if (d.state) {
             // update animation data
-            animation_data = [[d3.select(this).attr("cx"),d3.select(this).attr("cy")]]
+            animation_data = [[d3.select(this).attr("cx"), d3.select(this).attr("cy")]]
         }
-
     })
 }
 //close video functions
@@ -124,8 +124,8 @@ let floorSelection = async (floor) => {
         cirs.on("click", function (d) {
             let cir = d3.select(this)
             let name = cir.attr("data-name")
-            cir.attr("fill","black")
-            cir.attr("class","visited")
+            cir.attr("fill", "black")
+            cir.attr("class", "visited")
             // load correct scene and make new tab of the scene
             let a = document.createElement("a")
             a.setAttribute("target", "_blank")
@@ -135,7 +135,7 @@ let floorSelection = async (floor) => {
             // if so move up by one or else don't change
             if (d.state) {
                 d.state = false
-                let next = d3_data.map(e=> e.name).indexOf(d.name)+1
+                let next = d3_data.map(e => e.name).indexOf(d.name) + 1
                 if (d3_data[next] == undefined) {
                     // completed tour
                     //remove animation

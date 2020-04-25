@@ -8,7 +8,7 @@ let videoHide =()=> {
 }
 let videoShow =()=> {
     document.querySelector("#video_elements").style.visibility = "visible"
-    let audio = document.querySelector("audio")
+    let audio = document.querySelector("#video_elements audio")
     audio.play().catch(error => {
         alert("please enable autoplay of audio, click the play icon to left of internet address bar, https://support.mozilla.org/en-US/kb/block-autoplay,")
     })
@@ -65,15 +65,14 @@ let floorSelection = (floor) => {
 
 window.onload = async () => {
     // check for cookie
-    if (document.cookie.match(/watched_video/)) {
-        console.log(document.cookie)
-        // prevent video from showing
-        videoHide()
+    if (document.cookie.match(/watched_video=true/)) {
     } else {
         console.log("didn't have cookie")
         let expiryDate =new Date()
         expiryDate.setDate(expiryDate.getDate()+1)
         document.cookie = `watched_video=true;expires=${new Date(expiryDate.getTime())}`
+        videoShow()
+
     }
     sceneInfo = await fetch("./resources/sceneinfo.yml").then(res => res.text()).then(t => {
         //convert into a json object with the jsyaml library

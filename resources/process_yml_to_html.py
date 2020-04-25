@@ -74,14 +74,14 @@ insertion_section = """
   100% { transform: rotate(360deg); }
 }
   </style>
-  <a-scene cursor="rayOrigin: mouse">
+  <a-scene loading-screen="dotsColor: black; backgroundColor: white" cursor="rayOrigin: mouse">
     <a-camera id="clawcam" position="0 0 0"></a-camera>
 """
 
 for f in files:
     with open(f,"r") as phile:
         contents = phile.read()
-    contents = contents.replace("<a-scene cursor=\"rayOrigin: mouse\">",insertion_section)
+    contents = contents.replace("<a-scene loading-screen="dotsColor: black; backgroundColor: white" cursor=\"rayOrigin: mouse\">",insertion_section)
     with open(f,"w") as phile:
         phile.write(contents)
 
@@ -195,4 +195,22 @@ for html in htmls:
       new.append(line)
   with open("/tmp/"+html,"w") as ophile:
     ophile.write("\n".join(new))
+
+
+## add loading line to all scenes
+for pth,sub,fls in os.walk("./"):
+  if "node_modules" in pth:
+    continue
+  for f in fls:
+    if not "html" in f:
+      continue
+    print(f)
+    with open(pth+"/"+f,"r") as phile:
+      contents = phile.read()
+      if "<a-scene loading-screen="dotsColor: black; backgroundColor: white"" in contents:
+        start = contents.find("<a-scene loading-screen="dotsColor: black; backgroundColor: white"")
+        contents = contents.replace("<a-scene loading-screen="dotsColor: black; backgroundColor: white"","<a-scene loading-screen="dotsColor: black; backgroundColor: white" loading-screen=\"dotsColor: black; backgroundColor: white\"")
+        print("\n",contents[start-30:start + 50],"\n")
+        
+
 
