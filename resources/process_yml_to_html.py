@@ -202,15 +202,13 @@ for pth,sub,fls in os.walk("./"):
   if "node_modules" in pth:
     continue
   for f in fls:
-    if not "html" in f:
+    if not "html" in f or "._" in f:
       continue
     print(f)
     with open(pth+"/"+f,"r") as phile:
       contents = phile.read()
-      if "<a-scene loading-screen="dotsColor: black; backgroundColor: white"" in contents:
-        start = contents.find("<a-scene loading-screen="dotsColor: black; backgroundColor: white"")
-        contents = contents.replace("<a-scene loading-screen="dotsColor: black; backgroundColor: white"","<a-scene loading-screen="dotsColor: black; backgroundColor: white" loading-screen=\"dotsColor: black; backgroundColor: white\"")
-        print("\n",contents[start-30:start + 50],"\n")
-        
+      with open(pth+"/"+f,"w") as ophile:
+        ophile.write(contents.replace("a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true"","a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true" animation=\"property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true\""))
+
 
 

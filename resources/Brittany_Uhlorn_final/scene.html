@@ -37,13 +37,7 @@
             ob.create = () => {
                 ob.audio = document.createElement("audio")
                 ob.audio.src = "Brittany_Uhlorn.mp3"
-                if (!document.cookie.match(/audio_heard_brittany=true/)) {
-                    console.log("didn't have cookie")
-                    let expiryDate = new Date()
-                    expiryDate.setDate(expiryDate.getDate() + 1)
-                    document.cookie = `audio_heard_brittany=true;expires=${new Date(expiryDate.getTime())}`
-                    ob.toggle()
-                }
+                ob.toggle()
             }
 
             ob.toggle = () => {
@@ -107,6 +101,7 @@
             init: function () {
                 let el = this.el
                 let popout_html_file = this.data.popoutInnerHTML
+                // create interval timer that changes material color
                 this.el.addEventListener('mouseenter', function (e) {
                     // play with emissivity
                     el.setAttribute("material", "color", "#5ef7ff")
@@ -179,12 +174,12 @@
             <a-camera look-controls></a-camera>
         </a-entity>
 
-        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
+        <a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true" animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true" material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
             mlisten="popoutInnerHTML:popout_0.html" id="Brittany_Uhlorn_circle_1" rotation="0 54.02762824965612 0"
-            position="-15.00609 0.21709 -13.02805"></a-circle>
-        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
+            position="-15.00609 0.21709 -13.02805"></a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true">
+        <a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true" material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
             mlisten="popoutInnerHTML:popout_1.html" id="Brittany_Uhlorn_circle_2" rotation="0 72.05574527344746 0"
-            position="-14.26734 -0.31432 -2.00736"></a-circle>
+            position="-14.26734 -0.31432 -2.00736"></a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true">
         <a-sky src="#360-image"></a-sky>
     </a-scene>
     <div id="audio">

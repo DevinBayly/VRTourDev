@@ -128,9 +128,9 @@
     <a-scene loading-screen="dotsColor: black; backgroundColor: white" cursor="rayOrigin: mouse">
         <a-camera id="{name}_cam" rotation="-14.55312799632291 -147.8196733969816 0" position="0 0 0"></a-camera>
 
-        <a-circle material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
+        <a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true" material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png"
             mlisten="popoutInnerHTML:popout.html" id="{name}_circle_1" rotation="0 54.02762824965611 0"
-            position="-8.74902 3.53636 -2.00736"></a-circle>
+            position="-8.74902 3.53636 -2.00736"></a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true">
         <a-sky src="360_scene.jpg"></a-sky>
     </a-scene>
 </body>

@@ -69,12 +69,14 @@ let selectScene = (student) => {
     // if student is the active one move the active over one
     d3.selectAll("circle").each(function (d, i) {
         // update state
-        if (student == d.name && d.state) {
+        if (student == d.name) {
             d.state = false
             // trigger the click
             d3.select(this).dispatch("click")
             // update which is targeted
-            d3_data[d3_data.map(d => d.name).indexOf(student) + 1].state = true
+            if (d.state) {
+                d3_data[d3_data.map(d => d.name).indexOf(student) + 1].state = true
+            }
         }
 
     })
@@ -156,17 +158,7 @@ let floorSelection = async (floor) => {
 
 
 window.onload = async () => {
-    // check for cookie
-    if (document.cookie.match(/watched_video=true/)) {
-        console.log(document.cookie)
-        // prevent video from showing
-    } else {
-        console.log("didn't have cookie")
-        let expiryDate = new Date()
-        expiryDate.setDate(expiryDate.getDate() + 1)
-        document.cookie = `watched_video=true;expires=${new Date(expiryDate.getTime())}`
-        mediaShow()
-    }
+    mediaShow()
     sceneInfo = await fetch("./resources/sceneinfo.yml").then(res => res.text()).then(t => {
         //convert into a json object with the jsyaml library
         return jsyaml.safeLoad(t)

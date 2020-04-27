@@ -7,6 +7,7 @@ let videoHide =()=> {
    document.querySelector("#video_elements").style.visibility = "hidden"
 }
 let videoShow =()=> {
+    console.log("running videoShow")
     document.querySelector("#video_elements").style.visibility = "visible"
     let audio = document.querySelector("#video_elements audio")
     audio.play().catch(error => {
@@ -65,15 +66,7 @@ let floorSelection = (floor) => {
 
 window.onload = async () => {
     // check for cookie
-    if (document.cookie.match(/watched_video=true/)) {
-    } else {
-        console.log("didn't have cookie")
-        let expiryDate =new Date()
-        expiryDate.setDate(expiryDate.getDate()+1)
-        document.cookie = `watched_video=true;expires=${new Date(expiryDate.getTime())}`
-        videoShow()
-
-    }
+    videoShow()
     sceneInfo = await fetch("./resources/sceneinfo.yml").then(res => res.text()).then(t => {
         //convert into a json object with the jsyaml library
         return jsyaml.safeLoad(t)
