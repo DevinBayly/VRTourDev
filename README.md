@@ -11,7 +11,7 @@ This project is a collection of 360 immersion images and content to provide tour
 * Deanna R Sanchez: Graphic Designer, Senior
 * Eduardo Contreras: 
 
-<img src="resources/credit_logo.png" width="20%">
+<img src="resources/credit_logo.png" width="30%">
 
 
 ### Website and WebVR content created by 
