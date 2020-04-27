@@ -1,6 +1,8 @@
 let activeInd = 0
-let d3_data = [{ name: "Brittany_Uhlorn", state: true }, { name: "Anthony_Aguilar", state: false }, { name: "Logan_Beers", state: false }, { name: "Ryan_Hunt", state: false }]
-let animation_data = [[0, 0]]
+let d3_data = [{ name: "Brittany_Uhlorn", state: true }, { name: "Anthony_Aguilar", state: true }, { name: "Logan_Beers", state: true }, { name: "Ryan_Hunt", state: true }]
+let animation_data = [
+    {name:"Brittany_Uhlorn"},{name:"Anthony_Aguilar"},{name:"Logan_Beers"},{name:"Ryan_Hunt"}
+]
 let tourContinue
 let visualBinding = () => {
     let ob = {}
@@ -22,15 +24,11 @@ let visualBinding = () => {
             endRad = 11
             startRad = 30
         }
-        ob.svg.selectAll("circle").each(function (d) {
-            if (d.state) {
-                animation_data = [[d3.select(this).attr("cx"), d3.select(this).attr("cy")]]
-
-            }
-            return d3.select(this).attr("cx")
-        })
+        // must assign all animation data first
         if (ob.round == 0) {
-            ob.marker = ob.svg.selectAll("#marker").data(animation_data).enter().append("circle")
+            ob.marker = ob.svg.selectAll("#marker").data(animation_data,function(d){
+                return d.name
+            }).enter().append("circle")
         } else {
             ob.svg.select("#marker").data(animation_data)
         }
@@ -38,19 +36,32 @@ let visualBinding = () => {
         ob.marker.attr("id", "marker")
             .attr("stroke", "#ef4056")
             .attr("stroke-width", 3)
-            .attr("r", startRad)
+            .attr("r", d=> {
+                if(!d.state) {
+                    return 0
+                } else {
+                    return startRad
+                }
+            })
             .attr("fill-opacity", 0)
             .attr("cx", d => {
-                return d[0]
+                return d.data[0]
             })
             .attr("cy", d => {
-                return d[1]
+                return d.data[1]
             })
             .transition()
             .duration(ob.duration)
             .ease(d3.easeLinear)
-            .attr("r", endRad)
+            .attr("r",d=> {
+                if (!d.state) {
+                    return 0
+                } else {
+                    return endRad
+                }
+            })
         ob.round += 1
+
 
     }
     ob.start = () => {
@@ -59,6 +70,19 @@ let visualBinding = () => {
         ob.svg.selectAll("circle").data(d3_data, function (d) {
             return (d && d.name) || d3.select(this).attr("data-name")
         })
+        // create animation data ob
+        ob.svg.selectAll("circle").each(function(d){
+            let cir = d3.select(this)
+            for(let i = 0; i < animation_data.length;i++) {
+                let anim_d = animation_data[i]
+                if (cir.attr("data-name") == anim_d.name) {
+                    // update the anim with the cx of the 
+                    anim_d.data= [cir.attr("cx"),cir.attr("cy")]
+                    anim_d.state = true
+                }
+            }
+        })
+
         ob.restart()
     }
     return ob
@@ -74,17 +98,8 @@ let selectScene = (student) => {
             // trigger the click
             d3.select(this).dispatch("click")
             // update which is targeted
-            if (d.state) {
-                d3_data[d3_data.map(d => d.name).indexOf(student) + 1].state = true
-            }
         }
 
-    })
-    d3.selectAll("circle").each(function (d) {
-        if (d.state) {
-            // update animation data
-            animation_data = [[d3.select(this).attr("cx"), d3.select(this).attr("cy")]]
-        }
     })
 }
 //close video functions
@@ -126,8 +141,6 @@ let floorSelection = async (floor) => {
         cirs.on("click", function (d) {
             let cir = d3.select(this)
             let name = cir.attr("data-name")
-            cir.attr("fill", "black")
-            cir.attr("class", "visited")
             // load correct scene and make new tab of the scene
             let a = document.createElement("a")
             a.setAttribute("target", "_blank")
@@ -135,8 +148,12 @@ let floorSelection = async (floor) => {
             a.click()
             // see if it was the highlighted
             // if so move up by one or else don't change
-            if (d.state) {
-                d.state = false
+                animation_data = animation_data.map(anim_d=> {
+                    if (d.name == anim_d.name ) {
+                        anim_d.state = false
+                    }
+                    return anim_d
+                })
                 let next = d3_data.map(e => e.name).indexOf(d.name) + 1
                 if (d3_data[next] == undefined) {
                     // completed tour
@@ -146,8 +163,6 @@ let floorSelection = async (floor) => {
                 d3_data[next].state = true
                 // mark sidebar as complete
                 document.querySelector(`li#${d.name}`).className = "active"
-
-            }
 
 
 
