@@ -148,19 +148,17 @@ let floorSelection = async (floor) => {
             a.click()
             // see if it was the highlighted
             // if so move up by one or else don't change
+            // if none of the dots have been missed end the animation block
+                tourContinue =false
                 animation_data = animation_data.map(anim_d=> {
                     if (d.name == anim_d.name ) {
                         anim_d.state = false
                     }
+                    if (anim_d.state) {
+                        tourContinue =true
+                    }
                     return anim_d
                 })
-                let next = d3_data.map(e => e.name).indexOf(d.name) + 1
-                if (d3_data[next] == undefined) {
-                    // completed tour
-                    //remove animation
-                    tourContinue = false
-                }
-                d3_data[next].state = true
                 // mark sidebar as complete
                 document.querySelector(`li#${d.name}`).className = "active"
 
