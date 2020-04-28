@@ -197,6 +197,8 @@ for html in htmls:
     ophile.write("\n".join(new))
 
 
+
+
 ## add loading line to all scenes
 for pth,sub,fls in os.walk("./"):
   if "node_modules" in pth:
@@ -209,6 +211,25 @@ for pth,sub,fls in os.walk("./"):
       contents = phile.read()
       with open(pth+"/"+f,"w") as ophile:
         ophile.write(contents.replace("a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true"","a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true" animation=\"property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true\""))
+
+
+
+
+import re
+import os
+os.chdir("/home/lil/Documents/VRTourDev/resources/")
+## add loading line to all scenes
+for pth,sub,fls in os.walk("./"):
+  if not "final" in pth:
+    continue
+  for f in fls:
+    if "popout" in f:
+      print(f)
+      with open(pth+"/"+f,"r") as iphile:
+        print(re.search("class=.*?popout",iphile.read()))
+     ##   contents = iphile.read()
+     ##   with open(pth+"/"+f,"w") as ophile:
+     ##     ophile.write(re.sub("(<h2>.*?</h2>)","\g<0>\n<img src=\"headshot.jpg\">",contents))
 
 
 

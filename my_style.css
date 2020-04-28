@@ -16,6 +16,16 @@
 @import url("https://uanews.arizona.edu/sites/all/libraries/fontawesome/css/font-awesome.css?q8xo4e");
 @import url("https://uanews.arizona.edu/sites/all/libraries/superfish/css/superfish.css?q8xo4e");
 
+#spread-group {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+li img {
+    width:50%;
+}
+
 .overlay {
     position:fixed;
     top:0px;
