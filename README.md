@@ -14,9 +14,16 @@ This project is a collection of 360 immersion images and content to provide tour
 <img src="resources/credit_logo.png" width="30%">
 
 
-### Website and WebVR content created by 
+### Repo, Website, and WebVR content created by 
 
 * Devin Bayly: Research Computation Specialist 
 
 
 <img src="resources/rt_dv_logo.png" width="20%" >
+
+
+### Contributing, Extending, Replicating
+
+Instructions for all of this can be found in the wiki of this github repo
+
+https://github.com/DevinBayly/VRTourDev/wiki
