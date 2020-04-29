@@ -288,8 +288,8 @@ for pth,sub,fls in os.walk("./"):
 
 import shutil as sh
 ## renaming area
-present_name= "art_exhibit.html" 
-new_name="art_exhibit.html"
+present_name= "art_exhibit.js" 
+new_name="art_exhibit.js"
 ## walk the directory and copy the file into new name, and then whenever its found in the contents of another file replace it
 for pth,sub,fls in os.walk("./"):
   if "node_modules" in pth:
@@ -312,3 +312,4 @@ for pth,sub,fls in os.walk("./"):
         print(f,"x")
         print(e)
         
+
