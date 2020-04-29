@@ -101,17 +101,6 @@
                     xPopoutIcon.addEventListener("click",()=> {
                         document.querySelector("iframe").remove()
                     })
-
-                    // add image to close it
-                    let xPopoutIcon = document.createElement("img")
-                    xPopoutIcon.src= "../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png"
-                    iframeElement.contentDocument.body.append(xPopoutIcon)
-                    xPopoutIcon.style.position="absolute"
-                    xPopoutIcon.style.top = "0px"
-                    xPopoutIcon.style.right = "0px"
-                    xPopoutIcon.addEventListener("click",()=> {
-                        document.querySelector("iframe").remove()
-                    })
                     btn.addEventListener("click", () => {
                         document.querySelector("iframe").remove()
                     })
