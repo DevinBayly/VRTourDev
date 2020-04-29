@@ -21,7 +21,7 @@
 
                     // add image to close it
                     let xPopoutIcon = document.createElement("img")
-                    xPopoutIcon.src= "ua-brand-icons/ua-brand-icons-image-files/PNG/x.png"
+                    xPopoutIcon.src= "../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png"
                     iframeElement.contentDocument.body.append(xPopoutIcon)
                     xPopoutIcon.style.position="absolute"
                     xPopoutIcon.style.top = "0px"
@@ -113,7 +113,7 @@
     <img src="DB5-V art tour/insta-360/IMG_20191104_152433_00_024.jpg" id="360-image" alt="">
   </a-assets>
   
-  <a-entity id="dtudl" position="0 0 0" rotation="-14.571462645767095 -76.39418169817804 0.9390778262194192">
+  <a-entity id="dtudl" position="0 0 0" rotation="0 -76.3941816981 0">
     <a-camera look-controls></a-camera>
   </a-entity>
 
@@ -122,13 +122,13 @@
     <a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true" material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Heather_Green_Living_Cosmos_popout.html"
       id="green" rotation="0 95.30637259985627 0" position="-12 8 2"></a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true">
     <a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true" material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Michael_Holcomb_New_Map_of_Hope_popout.html"
-      id="crazyswirls" rotation="0 -71.8070815903607 0" position="30 3.53636 -8"></a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true">
+      id="crazyswirls" rotation="6 -90.8070815903607 4.3" position="30 3.53636 -8"></a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true">
        <a-sky id="fnnvr" src="#360-image"></a-sky> 
   </a-scene>
 
     <div id="exit" >
 
-        <img  style="position:absolute;top:0px;right:0px;" onclick="window.close()" src="ua-brand-icons/ua-brand-icons-image-files/PNG/x.png" alt="">
+        <img  style="position:absolute;top:0px;right:0px;" onclick="window.close()" src="../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png" alt="">
         </div>
         
 </body>
