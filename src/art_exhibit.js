@@ -11,7 +11,11 @@ let videoShow =()=> {
     document.querySelector("#video_elements").style.visibility = "visible"
     let audio = document.querySelector("#video_elements audio")
     audio.play().catch(error => {
-        alert("please enable autoplay of audio, click the play icon to left of internet address bar, https://support.mozilla.org/en-US/kb/block-autoplay, on mobile go to settings, advanced, media allow autoplay.")
+        
+alert(`please enable autoplay of audio,
+ click the play icon to left of internet address bar,
+ on mobile go to settings, advanced, media allow autoplay. 
+ Or you may manually click the on the audio element in the page`)
     })
 }
 
@@ -51,8 +55,10 @@ let floorSelection = (floor) => {
             let cir = d3.select(this)
             let name = cir.attr("data-name").replace(/ /g, "_")
             // load correct scene and make new tab of the scene
-            let win = window.open(`resources/${name}.html`,"_blank")
-            win.focus()
+            let a = document.createElement("a")
+            a.setAttribute("target", "_blank")
+            a.href = `resources/art_exhibit/${name}.html`
+            a.click()
 
 
 

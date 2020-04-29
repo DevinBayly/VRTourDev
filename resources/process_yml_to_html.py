@@ -251,35 +251,52 @@ popout_close_code = """
                         document.querySelector("iframe").remove()
                     })
 """
-
-query_string = "\.\.\/ua-brand"
 query_string = "\s*if \(btn\) \{"
-## add loading line to all scenes
+actual_string = "                if (btn) {
 
+                    // add image to close it
+                    let xPopoutIcon = document.createElement("img")
+                    xPopoutIcon.src= "../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png"
+                    iframeElement.contentDocument.body.append(xPopoutIcon)
+                    xPopoutIcon.style.position="absolute"
+                    xPopoutIcon.style.top = "0px"
+                    xPopoutIcon.style.right = "0px"
+                    xPopoutIcon.addEventListener("click",()=> {
+                        document.querySelector("iframe").remove()
+                    })
+"
+os.getcwd()
+os.chdir("../../")
+query_string = "alert\(.*?please enable.*?\)"
+actual_string = "alert(`please enable autoplay of audio,\\n click the play icon to left of internet address bar,\\n on mobile go to settings, advanced, media allow autoplay. \\n Or you may manually click the on the audio element in the page`)"
+
+## add loading line to all scenes
 for pth,sub,fls in os.walk("./"):
-  if "node_modules" in pth or "_final" in pth:
+  if "node_modules" in pth:
     continue
   for f in fls:
-    if ".html" in f:
-      try:
-        with open(pth+"/"+f,"r") as iphile:
-          contents = iphile.read()
-          res = re.search(query_string,contents)
-          if res:
-            print(f)
-            new_contents =re.sub(query_string,"ua-brand",contents)
-            with open(pth+"/"+f,"w") as ophile:
-              ophile.write(new_contents)
-      except Exception as e:
-        print(f,"x")
-        print(e)
-        
+    try:
+      with open(pth+"/"+f,"r") as iphile:
+        contents = iphile.read()
+        res = re.search(query_string,contents)
+        if res:
+          print(f)
+          new_contents = re.sub(query_string,"\n"+actual_string,contents)
+          print(new_contents)
+          with open(pth+"/"+f,"w") as ophile:
+            ophile.write(new_contents)
+    except Exception as e:
+      pass
+      #print(f,"x")
+      #print(e)
+      
 
 
 import shutil as sh
 ## renaming area
+os.getcwd()
 present_name= "art_exhibit.js" 
-new_name="art_exhibit.js"
+new_name="src/art_exhibit.js"
 ## walk the directory and copy the file into new name, and then whenever its found in the contents of another file replace it
 for pth,sub,fls in os.walk("./"):
   if "node_modules" in pth:
