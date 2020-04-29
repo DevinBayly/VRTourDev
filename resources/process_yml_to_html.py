@@ -251,33 +251,23 @@ popout_close_code = """
                         document.querySelector("iframe").remove()
                     })
 """
-query_string = "\s*if \(btn\) \{"
-actual_string = "                if (btn) {
 
-                    // add image to close it
-                    let xPopoutIcon = document.createElement("img")
-                    xPopoutIcon.src= "../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png"
-                    iframeElement.contentDocument.body.append(xPopoutIcon)
-                    xPopoutIcon.style.position="absolute"
-                    xPopoutIcon.style.top = "0px"
-                    xPopoutIcon.style.right = "0px"
-                    xPopoutIcon.addEventListener("click",()=> {
-                        document.querySelector("iframe").remove()
-                    })
-"
+query_string = "\.\.\/ua-brand"
+query_string = "\s*if \(btn\) \{"
 ## add loading line to all scenes
+
 for pth,sub,fls in os.walk("./"):
-  if "node_modules" in pth:
+  if "node_modules" in pth or "_final" in pth:
     continue
   for f in fls:
-    if "html" in f:
+    if ".html" in f:
       try:
         with open(pth+"/"+f,"r") as iphile:
           contents = iphile.read()
           res = re.search(query_string,contents)
           if res:
             print(f)
-            new_contents = re.sub(query_string,"\n"+actual_string,contents)
+            new_contents =re.sub(query_string,"ua-brand",contents)
             with open(pth+"/"+f,"w") as ophile:
               ophile.write(new_contents)
       except Exception as e:

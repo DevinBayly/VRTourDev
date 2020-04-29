@@ -51,10 +51,8 @@ let floorSelection = (floor) => {
             let cir = d3.select(this)
             let name = cir.attr("data-name").replace(/ /g, "_")
             // load correct scene and make new tab of the scene
-            let a = document.createElement("a")
-            a.setAttribute("target", "_blank")
-            a.href = `resources/${name}.html`
-            a.click()
+            let win = window.open(`resources/${name}.html`,"_blank")
+            win.focus()
 
 
 
