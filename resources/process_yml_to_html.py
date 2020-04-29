@@ -286,3 +286,29 @@ for pth,sub,fls in os.walk("./"):
         
 
 
+import shutil as sh
+## renaming area
+present_name= "student_experience_bootstrap.html" 
+new_name="student_experience.html"
+## walk the directory and copy the file into new name, and then whenever its found in the contents of another file replace it
+for pth,sub,fls in os.walk("./"):
+  if "node_modules" in pth:
+    continue
+  for f in fls:
+    if f == present_name:
+      ## make a copy
+      sh.copy(pth+"/"+f,pth+"/"+new_name)
+    else:
+      try:
+        with open(pth+"/"+f,"r") as iphile:
+          contents = iphile.read()
+          res = re.search(present_name,contents)
+          if res:
+            print(f)
+            new_contents = re.sub(present_name,new_name,contents)
+            with open(pth+"/"+f,"w") as ophile:
+              ophile.write(new_contents)
+      except Exception as e:
+        print(f,"x")
+        print(e)
+        
