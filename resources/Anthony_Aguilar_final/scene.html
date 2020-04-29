@@ -2,6 +2,12 @@
 
 <head>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+       <!-- Latest icon font stylesheet -->
+    <link rel="stylesheet" href="https://cdn.uadigital.arizona.edu/lib/ua-brand-icons/v1.1.0/ua-brand-icons.min.css">
+
+    <!-- Compiled and minified UA Bootstrap CSS, icon font not included -->
+    <link rel="stylesheet"
+        href="https://cdn.uadigital.arizona.edu/lib/ua-bootstrap/v1.0.0-beta.26/ua-bootstrap.min.css"> 
     <style>
         iframe {
             position: absolute;
@@ -47,7 +53,7 @@
                 if (ob.on) {
                     // play audio
                     ob.audio.play().catch(error=> {
-                        alert("please enable autoplay of audio, click the play icon to left of internet address bar, https://support.mozilla.org/en-US/kb/block-autoplay,")
+                        alert("please enable autoplay of audio, click the play icon to left of internet address bar, https://support.mozilla.org/en-US/kb/block-autoplay, on mobile go to settings, advanced, media allow autoplay.")
                     })
                     // change style of icon
                     ob.img.id = "audioOn"
@@ -61,7 +67,9 @@
             }
             return ob
         }
+
         let anthonyAudio
+        // 
         window.onload = () => {
             anthonyAudio = audioOb()
             anthonyAudio.create()
@@ -82,15 +90,34 @@
             let closeInt = setInterval(() => {
                 let btn = iframeElement.contentDocument.querySelector("button")
                 if (btn) {
+
+                    // add image to close it
+                    let xPopoutIcon = document.createElement("img")
+                    xPopoutIcon.src= "../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png"
+                    iframeElement.contentDocument.body.append(xPopoutIcon)
+                    xPopoutIcon.style.position="absolute"
+                    xPopoutIcon.style.top = "0px"
+                    xPopoutIcon.style.right = "0px"
+                    xPopoutIcon.addEventListener("click",()=> {
+                        document.querySelector("iframe").remove()
+                    })
+
+                    // add image to close it
+                    let xPopoutIcon = document.createElement("img")
+                    xPopoutIcon.src= "../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png"
+                    iframeElement.contentDocument.body.append(xPopoutIcon)
+                    xPopoutIcon.style.position="absolute"
+                    xPopoutIcon.style.top = "0px"
+                    xPopoutIcon.style.right = "0px"
+                    xPopoutIcon.addEventListener("click",()=> {
+                        document.querySelector("iframe").remove()
+                    })
                     btn.addEventListener("click", () => {
                         document.querySelector("iframe").remove()
                     })
                     clearInterval(closeInt)
                 }
             }, 1000)
-            iframeElement.contentDocument.querySelector("button").addEventListener("click", () => {
-                document.querySelector("iframe").remove()
-            })
         }
     </script>
     <script>
@@ -181,6 +208,16 @@
             position="-16.80523 -5.68136 11.09496"></a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true">
         <a-sky src="#360-image"></a-sky>
     </a-scene>
+
+    <div id="exit" >
+
+        <img  style="position:absolute;top:0px;right:0px;" onclick="window.close()" src="../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png" alt="">
+        </div>
+        
+    <div id="exit" >
+        
+        <img  style="position:absolute;top:0px;right:0px;" onclick="window.close()" src="../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png" alt="">
+        </div>
     <div id="audio">
         <img id="audioOff" src="../audio_icon.svg" alt="" onclick="anthonyAudio.toggle()"></div>
 </body>

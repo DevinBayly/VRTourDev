@@ -17,7 +17,19 @@
       // recursive timeout till selection passes
       let closeInt = setInterval(() => {
         let btn = iframeElement.contentDocument.querySelector("button")
-        if (btn) {
+                if (btn) {
+
+                    // add image to close it
+                    let xPopoutIcon = document.createElement("img")
+                    xPopoutIcon.src= "../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png"
+                    iframeElement.contentDocument.body.append(xPopoutIcon)
+                    xPopoutIcon.style.position="absolute"
+                    xPopoutIcon.style.top = "0px"
+                    xPopoutIcon.style.right = "0px"
+                    xPopoutIcon.addEventListener("click",()=> {
+                        document.querySelector("iframe").remove()
+                    })
+
           btn.addEventListener("click", () => {
             document.querySelector("iframe").remove()
           })
@@ -111,6 +123,12 @@
       id="infotemplate" rotation="0 54.02762824965611 0" position="-8.74902 3.53636 -2.00736"></a-circle>
        <a-sky id="knbrg" src="#360-image"></a-sky> 
   </a-scene>
+
+    <div id="exit" >
+
+        <img  style="position:absolute;top:0px;right:0px;" onclick="window.close()" src="../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png" alt="">
+        </div>
+        
 </body>
 
 </html>
