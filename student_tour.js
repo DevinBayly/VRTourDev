@@ -113,7 +113,10 @@ let videoHide = () => {
 let mediaShow = () => {
     document.querySelector("#video_elements").style.visibility = "visible"
     let audio = document.querySelector("#video_elements audio")
-    audio.play()
+    audio.play().catch(error => {
+        alert("please enable autoplay of audio, click the play icon to left of internet address bar, https://support.mozilla.org/en-US/kb/block-autoplay, on mobile go to settings, advanced, media allow autoplay.")
+    })
+
 }
 
 // floor change functions
@@ -142,10 +145,13 @@ let floorSelection = async (floor) => {
             let cir = d3.select(this)
             let name = cir.attr("data-name")
             // load correct scene and make new tab of the scene
-            let a = document.createElement("a")
-            a.setAttribute("target", "_blank")
-            a.href = `resources/${name}_final/scene.html`
-            a.click()
+            let win = window.open(`resources/${name}_final/scene.html`,"_blank")
+            win.focus()
+
+            //let a = document.createElement("a")
+            //a.setAttribute("target", "_blank")
+            //a.href = `resources/${name}_final/scene.html`
+            //a.click()
             // see if it was the highlighted
             // if so move up by one or else don't change
             // if none of the dots have been missed end the animation block

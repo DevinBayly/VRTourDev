@@ -252,8 +252,7 @@ popout_close_code = """
                     })
 """
 query_string = "\s*if \(btn\) \{"
-actual_string = "
-                if (btn) {
+actual_string = "                if (btn) {
 
                     // add image to close it
                     let xPopoutIcon = document.createElement("img")
@@ -278,7 +277,7 @@ for pth,sub,fls in os.walk("./"):
           res = re.search(query_string,contents)
           if res:
             print(f)
-            new_contents = re.sub(query_string,actual_string+"\n{}".format(popout_close_code),contents)
+            new_contents = re.sub(query_string,"\n"+actual_string,contents)
             with open(pth+"/"+f,"w") as ophile:
               ophile.write(new_contents)
       except Exception as e:
