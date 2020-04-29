@@ -53,7 +53,7 @@ let floorSelection = (floor) => {
             // load correct scene and make new tab of the scene
             let a = document.createElement("a")
             a.setAttribute("target", "_blank")
-            a.href = `resources/${name}.html`
+            a.href = `resources/art_exhibit/${name}.html`
             a.click()
 
 
