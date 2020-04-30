@@ -12,10 +12,9 @@ let videoShow = () => {
     let audio = document.querySelector("#video_elements audio")
     audio.play().catch(error => {
 
-        alert(`please enable autoplay of audio,
- click the play icon to left of internet address bar,
- on mobile go to settings, advanced, media allow autoplay. 
- Or you may manually click the on the audio element in the page`)
+        
+alert(`Please enable browser autoplay to hear audio on this site. Directions: Click the icon in your address bar to the left of the URL. On mobile go to settings > advanced > media > allow autoplay. 
+Or manually start the audio within each screen by clicking on the audio element.)
     })
 }
 

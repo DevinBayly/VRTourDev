@@ -268,7 +268,9 @@ actual_string = "                if (btn) {
 os.getcwd()
 os.chdir("../../")
 query_string = "alert\(.*?please enable.*?\)"
-actual_string = "alert(`please enable autoplay of audio,\\n click the play icon to left of internet address bar,\\n on mobile go to settings, advanced, media allow autoplay. \\n Or you may manually click the on the audio element in the page`)"
+actual_string = "
+alert(`Please enable browser autoplay to hear audio on this site. Directions: Click the icon in your address bar to the left of the URL. On mobile go to settings > advanced > media > allow autoplay. 
+Or manually start the audio within each screen by clicking on the audio element.)"
 
 ## add loading line to all scenes
 for pth,sub,fls in os.walk("./"):
