@@ -116,8 +116,16 @@ let mediaShow = () => {
     audio.play().catch(error => {
         
 
-alert(`Please enable browser autoplay to hear audio on this site. Directions: Click the icon in your address bar to the left of the URL. On mobile go to settings > advanced > media > allow autoplay. 
-Or manually start the audio within each screen by clicking on the audio element.)
+
+
+
+alert(`Please enable browser autoplay to hear audio on this site.
+
+Directions: Click the icon in your address bar to the left of the URL.
+
+On mobile go to settings > advanced > media > allow autoplay.
+
+Or manually start the audio within each screen by clicking on the audio element.`)
     })
 
 }

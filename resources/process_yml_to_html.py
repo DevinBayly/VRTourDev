@@ -267,11 +267,9 @@ actual_string = "                if (btn) {
 "
 os.getcwd()
 os.chdir("../../")
-query_string = "alert\(.*?please enable.*?\)"
-actual_string = "
-alert(`Please enable browser autoplay to hear audio on this site. Directions: Click the icon in your address bar to the left of the URL. On mobile go to settings > advanced > media > allow autoplay. 
-Or manually start the audio within each screen by clicking on the audio element.)"
 
+query_string = "alert\(.*?Please enable[\w\W\n]*?\)"
+actual_string = "alert(`Please enable browser autoplay to hear audio on this site.\n\nDirections: Click the icon in your address bar to the left of the URL.\n\nOn mobile go to settings > advanced > media > allow autoplay.\n\nOr manually start the audio within each screen by clicking on the audio element.`)"
 ## add loading line to all scenes
 for pth,sub,fls in os.walk("./"):
   if "node_modules" in pth:
@@ -297,8 +295,11 @@ for pth,sub,fls in os.walk("./"):
 import shutil as sh
 ## renaming area
 os.getcwd()
-present_name= "art_exhibit.js" 
-new_name="src/art_exhibit.js"
+os.chdir("resources/art_exhibit")
+
+present_name= """<link rel="stylesheet" href="map_page_styles.css">
+    <script src="./index.js"></script>"""
+new_name=""
 ## walk the directory and copy the file into new name, and then whenever its found in the contents of another file replace it
 for pth,sub,fls in os.walk("./"):
   if "node_modules" in pth:
@@ -306,7 +307,8 @@ for pth,sub,fls in os.walk("./"):
   for f in fls:
     if f == present_name:
       ## make a copy
-      sh.copy(pth+"/"+f,pth+"/"+new_name)
+      #sh.copy(pth+"/"+f,pth+"/"+new_name)
+      pass
     else:
       try:
         with open(pth+"/"+f,"r") as iphile:
