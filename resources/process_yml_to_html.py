@@ -236,7 +236,7 @@ for pth,sub,fls in os.walk("./"):
 exit_text = """
     <div id="exit" >
         
-        <img  style="position:absolute;top:0px;right:0px;" onclick="window.close()" src="../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png" alt="">
+        <img  style="position:absolute;top:0px;right:0px;border:black solid;border-radius:10px;background:white"  onclick="window.close()" src="../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png" alt="">
         </div>
         """
 popout_close_code = """
@@ -270,6 +270,9 @@ os.chdir("../../")
 
 query_string = "alert\(.*?Please enable[\w\W\n]*?\)"
 actual_string = "alert(`Please enable browser autoplay to hear audio on this site.\n\nDirections: Click the icon in your address bar to the left of the URL.\n\nOn mobile go to settings > advanced > media > allow autoplay.\n\nOr manually start the audio within each screen by clicking on the audio element.`)"
+
+query_string = "img  style=\"position:absolute;top:0px;right:0px;\""
+actual_string = img  style=\"position:absolute;top:0px;right:0px;border:black solid;border-radius:10px;background:white\" "
 ## add loading line to all scenes
 for pth,sub,fls in os.walk("./"):
   if "node_modules" in pth:
@@ -280,8 +283,9 @@ for pth,sub,fls in os.walk("./"):
         contents = iphile.read()
         res = re.search(query_string,contents)
         if res:
+          print(res)
           print(f)
-          new_contents = re.sub(query_string,"\n"+actual_string,contents)
+          new_contents = re.sub(query_string,actual_string,contents)
           print(new_contents)
           with open(pth+"/"+f,"w") as ophile:
             ophile.write(new_contents)
