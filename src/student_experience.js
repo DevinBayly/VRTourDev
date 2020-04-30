@@ -125,7 +125,6 @@ alert(`please enable autoplay of audio,
 
 // floor change functions
 let mapSvg
-let sceneInfo
 let floorSelection = async (floor) => {
     // options here
     let floorFile = "tri_map.svg"
@@ -182,10 +181,6 @@ let floorSelection = async (floor) => {
 
 window.onload = async () => {
     mediaShow()
-    sceneInfo = await fetch("./resources/sceneinfo.yml").then(res => res.text()).then(t => {
-        //convert into a json object with the jsyaml library
-        return jsyaml.safeLoad(t)
-    })
     await floorSelection("first")
     let vb = visualBinding()
     vb.start()

@@ -1,18 +1,18 @@
 //close video functions
-let videoHide =()=> {
+let videoHide = () => {
     // make video go back to 0 and stop then hide
     let vid = document.querySelector("audio")
     vid.pause()
     vid.currentTime = 0
-   document.querySelector("#video_elements").style.visibility = "hidden"
+    document.querySelector("#video_elements").style.visibility = "hidden"
 }
-let videoShow =()=> {
+let videoShow = () => {
     console.log("running videoShow")
     document.querySelector("#video_elements").style.visibility = "visible"
     let audio = document.querySelector("#video_elements audio")
     audio.play().catch(error => {
-        
-alert(`please enable autoplay of audio,
+
+        alert(`please enable autoplay of audio,
  click the play icon to left of internet address bar,
  on mobile go to settings, advanced, media allow autoplay. 
  Or you may manually click the on the audio element in the page`)
@@ -21,7 +21,6 @@ alert(`please enable autoplay of audio,
 
 // floor change functions
 let mapSvg
-let sceneInfo
 let floorSelection = (floor) => {
     // options here
     let floorFile
@@ -71,9 +70,5 @@ let floorSelection = (floor) => {
 window.onload = async () => {
     // check for cookie
     videoShow()
-    sceneInfo = await fetch("./resources/sceneinfo.yml").then(res => res.text()).then(t => {
-        //convert into a json object with the jsyaml library
-        return jsyaml.safeLoad(t)
-    })
     floorSelection("first")
 }
