@@ -138,12 +138,16 @@ Since many of these files are the same minus the placement of cameras and info i
   </a-entity>
 
   
-
+<!-- Here's the info icon. its a circle shape with various components added to it -->
+<!-- animation makes the material emissivity change over time from black to a light gray -->
+<!-- the mlisten is the custom component that we defined that will actually create a popout in the left side to show info and images from the vr tour -->
     <a-circle animation="property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true" material="emissive: #000000;emissiveIntensity: .3;side: double;src: info.png" mlisten="popoutInnerHTML:Barbara_Rogers_A_Clear_Day_In_The_Valley_popout.html"
       id="clearday" rotation="0 54.02762824965612 0" position="-20 3.53636 -18.57084"></a-circle>
+      <!-- create a spherical element with the image asset on it -->
        <a-sky id="eqfdd" src="#360-image"></a-sky> 
   </a-scene>
 
+<!-- create  -->
     <div id="exit" >
 
         <img  style="position:absolute;top:0px;right:0px;border:black solid;border-radius:10px;background:white"  onclick="window.close()" src="../ua-brand-icons/ua-brand-icons-image-files/PNG/x.png" alt="">
@@ -176,6 +180,7 @@ Since many of these files are the same minus the placement of cameras and info i
     <div class="overlay">
 
     </div>
+    <!-- the popout class contains various pieces of styling to make sure the title text and images all show up in the right places -->
     <div class="container popout ">
         <div class="row">
             <div class="col-md-12">
