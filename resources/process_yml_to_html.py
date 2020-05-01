@@ -274,6 +274,7 @@ actual_string = "alert(`Please enable browser autoplay to hear audio on this sit
 query_string = "img  style=\"position:absolute;top:0px;right:0px;\""
 actual_string = img  style=\"position:absolute;top:0px;right:0px;border:black solid;border-radius:10px;background:white\" "
 ## add loading line to all scenes
+
 for pth,sub,fls in os.walk("./"):
   if "node_modules" in pth:
     continue
@@ -281,14 +282,10 @@ for pth,sub,fls in os.walk("./"):
     try:
       with open(pth+"/"+f,"r") as iphile:
         contents = iphile.read()
-        res = re.search(query_string,contents)
-        if res:
-          print(res)
-          print(f)
-          new_contents = re.sub(query_string,actual_string,contents)
-          print(new_contents)
-          with open(pth+"/"+f,"w") as ophile:
-            ophile.write(new_contents)
+        new_contents = contents.replace("/a-circle animation=\"property:material.emissive;to:#D2A5A5;dir:alternate;easing:linear;dur:1000;loop:true\">","/a-circle>")
+        print(new_contents)
+        with open(pth+"/"+f,"w") as ophile:
+          ophile.write(new_contents)
     except Exception as e:
       pass
       #print(f,"x")
