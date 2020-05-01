@@ -1,21 +1,27 @@
-let activeInd = 0
+// setup data used for animation and circle tracking for events
 let d3_data = [{ name: "Brittany_Uhlorn", state: true }, { name: "Anthony_Aguilar", state: true }, { name: "Logan_Beers", state: true }, { name: "Ryan_Hunt", state: true }]
 let animation_data = [
     {name:"Brittany_Uhlorn"},{name:"Anthony_Aguilar"},{name:"Logan_Beers"},{name:"Ryan_Hunt"}
 ]
+// tells us that all the scenes have been vistied in this session so we can stop animating
 let tourContinue
+// binds the animation data to the visual elements,
 let visualBinding = () => {
     let ob = {}
+    // helps track the expansion or retraction animation
     ob.round = 0
+    // determines the # ms the animation should run between start and end positions
     ob.duration = 2000
     tourContinue = true
+    // this function is repeatedly called in a recursive timeout so that the animation continues until tourContinue becomes false
     ob.restart = () => {
         if (!tourContinue) {
             ob.marker.remove()
             return
         }
+        // make function happen again in 2 seconds
         setTimeout(ob.restart, ob.duration)
-        console.log("starting over")
+        // these are the blip radii in px, alternate between start being larger for decreasing animation, and vice verse
         let startRad, endRad
         if (ob.round % 2 == 0) {
             startRad = 11
@@ -25,6 +31,7 @@ let visualBinding = () => {
             startRad = 30
         }
         // must assign all animation data first
+        // if we haven't animated yet, bind the data 
         if (ob.round == 0) {
             ob.marker = ob.svg.selectAll("#marker").data(animation_data,function(d){
                 return d.name
@@ -32,7 +39,9 @@ let visualBinding = () => {
         } else {
             ob.svg.select("#marker").data(animation_data)
         }
+        // put circles on top of animations so mouse events can reach them
         ob.svg.selectAll(".cls-3").raise()
+        //set the initial state for the transition to move from
         ob.marker.attr("id", "marker")
             .attr("stroke", "#ef4056")
             .attr("stroke-width", 3)
@@ -50,6 +59,7 @@ let visualBinding = () => {
             .attr("cy", d => {
                 return d.data[1]
             })
+            // declare the end state for the transition
             .transition()
             .duration(ob.duration)
             .ease(d3.easeLinear)
@@ -64,8 +74,9 @@ let visualBinding = () => {
 
 
     }
+    // initialize the visual binding
     ob.start = () => {
-        console.log("starting again")
+
         ob.svg = d3.select("svg")
         ob.svg.selectAll("circle").data(d3_data, function (d) {
             return (d && d.name) || d3.select(this).attr("data-name")
@@ -110,6 +121,7 @@ let videoHide = () => {
     vid.currentTime = 0
     document.querySelector("#video_elements").style.visibility = "hidden"
 }
+// this happens when page first loads, or when user clicks the "replay instructions tab"
 let mediaShow = () => {
     document.querySelector("#video_elements").style.visibility = "visible"
     let audio = document.querySelector("#video_elements audio")
@@ -157,11 +169,6 @@ let floorSelection = async (floor) => {
             // load correct scene and make new tab of the scene
             let win = window.open(`resources/${name}_final/scene.html`,"_blank")
             win.focus()
-
-            //let a = document.createElement("a")
-            //a.setAttribute("target", "_blank")
-            //a.href = `resources/${name}_final/scene.html`
-            //a.click()
             // see if it was the highlighted
             // if so move up by one or else don't change
             // if none of the dots have been missed end the animation block
