@@ -166,7 +166,7 @@ Since many of these files are the same minus the placement of cameras and info i
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BIO5 Institute VR</title>
     <!-- Latest icon font stylesheet -->
     <link rel="stylesheet" href="https://cdn.uadigital.arizona.edu/lib/ua-brand-icons/v1.1.0/ua-brand-icons.min.css">
 <!--x-->
